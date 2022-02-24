@@ -42,8 +42,10 @@ function interlude() {
     backgroundAudio.src = '../media/FreeTheMindInNature - WuNuo.mp3';
     backgroundAudio.volume = 0.7;
     backgroundAudio.preload;
-    //backgroundAudio.play();
-    document.body.append(backgroundAudio);
+    // backgroundAudio.play().then(function () {
+    //     console.log('Bài hát đã chạy thành công.');
+    // });
+    // document.body.append(backgroundAudio);
 
     area.animate(fadeOut(), options(0.5)).onfinish = function () {
         // appendObject('intro');
