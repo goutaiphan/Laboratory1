@@ -9,7 +9,7 @@ let array2 = [`Xin chúc mừng<br><span class="userName">${userData.userName}</
     `Đây là tài khoản<br><span>Thứ ${userData.userID.replace('user', '')}</span><br>
     đăng ký thành công tại<br><span>Tàng Kinh Các Đại Đạo.</span>`];
 let array3 = [`Chương trình <span>Niềm vui<br>tu Đạo</span> đang trong<br>giai đoạn <span>chuẩn bị,</span><br>`,
-    `<span>Tiểu Dần</span> sẽ thông báo<br>đến quý đạo hữu khi<br>chương trình <span>ra mắt.</span>
+    `<span>Tiểu Dần</span> sẽ thông báo<br>đến quý huynh tỷ khi<br>chương trình <span>ra mắt.</span>
     Xin trân trọng cảm ơn.`];
 
 // let section = sessionStorage.getItem('section');
