@@ -1,0 +1,2 @@
+# Auto detect serviceData files and perform LF normalization
+* serviceData=auto

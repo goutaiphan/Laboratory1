@@ -1,0 +1,43 @@
+.board {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+
+    width: 360px;
+    height: 390px;
+    margin: auto;
+    padding: 0 30px 40px;
+
+    border-radius: 5px;
+    border: 2px solid #c9bcb1;
+    background-color: #fdf9f1;
+}
+
+.message {
+    font-size: 21px;
+    line-height: 1.7;
+    word-wrap: break-word;
+}
+
+.userName {
+    font-size: 30px;
+}
+
+button {
+    width: 80%;
+    height: 55px;
+    margin: 40px 0 0;
+
+    font-size: 19.5px;
+    border-radius: 5px;
+    color: #4f3419;
+    background-color: #e7d8be;
+}
+
+.tieuDan {
+    width: 190px;
+    height: 190px;
+    margin: -70px auto 0;
+    background-image: url('../media/TigerFace.png');
+}

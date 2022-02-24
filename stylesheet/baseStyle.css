@@ -1,0 +1,50 @@
+@font-face {
+    font-family: 'PlayfairDisplay';
+    src: url('../font/PlayfairDisplay.ttf');
+}
+
+@font-face {
+    font-family: 'FairProsper';
+    src: url('../font/FairProsper.ttf')
+}
+
+@font-face {
+    font-family: 'Lora';
+    src: url('../font/Lora.ttf')
+}
+
+@font-face {
+    font-family: 'RobotoSlab';
+    src: url('../font/RobotoSlab.ttf')
+}
+
+* {
+    position: relative;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+
+    font-family: 'Lora', serif;
+    text-align: center;
+    background-color: transparent;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+body {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    padding: min(5vmax, 25px) 0;
+}
+
+span {
+    font-size: inherit;
+    color: #5d3b1a;
+}

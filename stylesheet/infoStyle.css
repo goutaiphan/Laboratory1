@@ -1,0 +1,138 @@
+.title p {
+    width: 95%;
+    margin: 0 auto;
+    font-family: 'PlayfairDisplay', serif;
+    font-size: 49px;
+    line-height: 1.4;
+    transform: scale(1.05, 1);
+
+    background-image: linear-gradient(to right, #363636, #744d26 90%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.title p:last-child {
+    margin: 2px auto 52px;
+}
+
+.board {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: start;
+
+    width: 350px;
+    height: 345px;
+    margin: 0 auto 55px;
+    padding: 25px 0 0;
+    border-radius: 5px;
+    border: 2px solid #c9bcb1;
+    background-color: #fdf9f1;
+}
+
+.email, .password, .name, .birthday  {
+    width: 75%;
+    height: 60px;
+    margin: 0 0 20px;
+    padding: 12px 0 0;
+    color: gray;
+    font-size: 21px;
+    border-bottom: 2px solid #b4b4b4;
+}
+
+::placeholder {
+    color: gray;
+}
+
+.password {
+    letter-spacing: 3px;
+}
+
+.password::placeholder {
+    letter-spacing: 0;
+}
+
+.name {
+    position: absolute;
+    inset: 0;
+    margin: 25px auto 0;
+    z-index: 1;
+}
+
+.birthday {
+    position: absolute;
+    inset: 0;
+    margin: 105px auto 0;
+    z-index: 1;
+}
+
+.otp {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 75%;
+    height: max-content;
+
+    position: absolute;
+    margin: 225px auto 0;
+    inset: 0;
+    z-index: 1;
+    background-color: #fdf9f1;
+}
+
+.otp input {
+    width: 55px;
+    height: 55px;
+
+    color: gray;
+    font-size: 21px;
+    border: 2px solid #b4b4b4;
+    border-radius: 5px;
+    background-color: lightgray;
+}
+
+.email.signIn, .password.signIn {
+    color: #416c33;
+    border-bottom: 2px solid #8b9f85;
+}
+
+.email.signUp, .password.signUp, .name.signUp, .birthday.signUp {
+    color: #3b3e81;
+    border-bottom: 2px solid #878798;
+}
+
+.buttonBox {
+    width: 75%;
+    height: 55px;
+    margin: 40px 0 0;
+}
+
+.button {
+    width: 100%;
+    height: 100%;
+
+    font-size: 19.5px;
+    border-radius: 5px;
+    color: gray;
+    background-color: lightgray;
+}
+
+.button.active {
+    color: #4f3419;
+    background-color: #e7d8be;
+    cursor: pointer;
+}
+
+.button.active:active {
+    transform: scale(0.95);
+}
+
+.message {
+    width: 350px;
+    margin: auto;
+    font-size: 20px;
+    line-height: 1.7;
+    word-wrap: break-word;
+}
