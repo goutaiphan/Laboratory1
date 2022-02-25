@@ -66,7 +66,7 @@
     z-index: 1;
 }
 
-.otp {
+.OTP {
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
@@ -82,7 +82,7 @@
     background-color: #fdf9f1;
 }
 
-.otp input {
+.OTP input {
     width: 55px;
     height: 55px;
 
@@ -93,12 +93,12 @@
     background-color: lightgray;
 }
 
-.email.signIn, .password.signIn {
+.green {
     color: #416c33;
     border-bottom: 2px solid #8b9f85;
 }
 
-.email.signUp, .password.signUp, .name.signUp, .birthday.signUp {
+.blue {
     color: #3b3e81;
     border-bottom: 2px solid #878798;
 }

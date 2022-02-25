@@ -146,7 +146,7 @@ function sendEmail(emailReceiver, emailSubject, emailBody) {
         Subject: emailSubject,
         Body: emailBody,
     }).then(function () {
-        console.log('Đã gửi thư thành công.');
+        console.log(`Email '${emailSubject}' đã gửi thành công.`);
     }).catch(function (error) {
         console.log(error.message);
     });

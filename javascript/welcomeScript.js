@@ -1,22 +1,24 @@
 import {appendObject, removeObject, setAppearance, setSize, setVisibility} from "./baseScript.js";
 import {bounce, fadeIn, fadeOut, maximize, options, slideIn} from "./animationScript.js";
 
-// let userData = JSON.parse(sessionStorage.getItem('userData'));
-let userData = {userName: 'Tĩnh Tâm', userID: 'user1'};
+let userData = JSON.parse(sessionStorage.getItem('userData'));
+// let userData = {userName: 'Tĩnh Tâm', userID: 'user1'};
 let array1 = [`Xin chào mừng<br><span class="userName">${userData.userName}</span><br>`,
     `đã quay trở lại<br>cùng chư huynh đệ<br><span>Tàng Kinh Các Đại Đạo.</span>`];
 let array2 = [`Xin chúc mừng<br><span class="userName">${userData.userName}</span>`,
-    `Đây là tài khoản<br><span>Thứ ${userData.userID.replace('user', '')}</span><br>
-    đăng ký thành công tại<br><span>Tàng Kinh Các Đại Đạo.</span>`];
+    `Đây là tài khoản <span>thứ ${userData.userID.replace('user', '')}</span><br>
+    đăng ký thành công tại<br><span>Tàng Kinh Các Đại Đạo.</span>`,
+    `<span>Thông tin tài khoản</span> đã gửi<br>qua <span>email,</span>
+    quý huynh tỷ<br>vui lòng lưu lại để sử dụng<br>khi cần thiết.`];
 let array3 = [`Chương trình <span>Niềm vui<br>tu Đạo</span> đang trong<br>giai đoạn <span>chuẩn bị,</span><br>`,
-    `<span>Tiểu Dần</span> sẽ thông báo<br>đến quý huynh tỷ khi<br>chương trình <span>ra mắt.</span>
+    `<span>Tiểu Dần</span> sẽ thông báo<br>đến quý huynh tỷ khi<br>chương trình <span>ra mắt.</span><br>
     Xin trân trọng cảm ơn.`];
 
-// let section = sessionStorage.getItem('section');
-let section = 'signIn';
+let section = sessionStorage.getItem('section');
+// let section = 'signIn';
 let array = section === 'signIn'
-    ? [...array1, ...array3]
-    : [...array2, ...array3];
+    ? array1.concat(array3)
+    : array2.concat(array3);
 
 let message = document.createElement('div');
 message.className = 'message';
@@ -70,8 +72,7 @@ document.body.onclick = function () {
 
 function interlude() {
     area.animate(fadeOut(), options(0.5)).onfinish = function () {
-        // appendObject('intro');
-        appendObject('welcome');
-        removeObject(area, 'entrance');
+        // appendObject('welcome');
+        removeObject(area, 'welcome');
     }
 }

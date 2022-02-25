@@ -34,19 +34,19 @@ let app = initializeApp({
 
 let array = {
     normal: `Quý huynh tỷ vui lòng<br><span>đăng nhập</span> hoặc <span>đăng ký</span><br>để tham gia chương trình.`,
-    signIn: `Tài khoản <span>đã tồn tại,</span><br>
-        quý huynh tỷ vui lòng điền<br>mật khẩu để <span>đăng nhập.</span>`,
+    signIn: `Tài khoản <span>đã tồn tại,</span> quý<br>
+        huynh tỷ vui lòng điền <span>mật khẩu</span><br>để đăng nhập tài khoản.`,
     wrongPassword: `Mật khẩu <span>chưa chính xác,</span><br>
         quý huynh tỷ vui lòng <span>kiểm tra</span><br>thông tin tài khoản qua email.`,
     rightPassword: `Mật khẩu <span>chính xác,</span><br>
-        quý huynh tỷ có thể <span>đăng nhập</span><br>để tham gia chương trình.`,
-    signUp: `<span>Mã xác thực</span> đã gửi qua <span>email,</span><br>
-        quý huynh tỷ vui lòng sử dụng<br>để <span>xác thực</span> tài khoản.`,
+        quý huynh tỷ vui lòng <span>đăng nhập</span><br>để tham gia chương trình.`,
+    verify: `<span>Mã xác thực</span> đã gửi qua <span>email,</span><br>
+        quý huynh tỷ vui lòng sử dụng<br>để <span>đăng ký</span> tài khoản.`,
     wrongOTP: `Mã xác thực <span>chưa chính xác,</span><br>
         quý huynh tỷ vui lòng <span>kiểm tra</span><br>thông tin tài khoản qua email.`,
     rightOTP: `Tài khoản <span>đã xác thực,</span><br>
-        quý đạo hữu vui lòng điền <span>mật khẩu</span><br>để tiếp tục việc đăng ký.`,
-    identify: `Quý huynh tỷ vui lòng điền<br><span>quý danh</span> và <span>sinh nhật</span><br>
+        quý huynh tỷ vui lòng điền <span>mật khẩu</span><br>để tiếp tục việc đăng ký.`,
+    signUp: `Quý huynh tỷ vui lòng điền<br><span>quý danh</span> và <span>sinh nhật</span><br>
         để hoàn thành việc đăng ký.`,
     offline: `Kết nối mạng <span>bị gián đoạn,</span><br>
         quý huynh tỷ vui lòng <span>kiểm tra</span><br>hệ thống mạng.`
@@ -66,14 +66,15 @@ password.className = 'password';
 password.type = 'password';
 password.placeholder = 'Mật khẩu';
 
-let otp = document.createElement('div');
-otp.className = 'otp';
+let OTP = document.createElement('div');
+OTP.className = 'OTP';
 for (let i = 0; i < 4; i++) {
     let child = document.createElement('input');
     child.inputMode = 'numeric';
     child.maxLength = 1;
-    otp.append(child);
+    OTP.append(child);
 }
+let OTPChildren = [...OTP.children];
 
 let button = document.createElement('button');
 button.className = 'button';
@@ -95,7 +96,7 @@ birthday.maxLength = 10;
 
 let board = document.createElement('div');
 board.className = 'board';
-board.append(email, password, otp, name, birthday, buttonBox);
+board.append(email, password, OTP, name, birthday, buttonBox);
 
 let message = document.createElement('div');
 message.className = 'message';
@@ -106,6 +107,7 @@ area.append(title, board, message);
 document.body.append(area);
 setVisibility([...title.children, board, ...board.children, message], false);
 setSize(area, 45, -10);
+sessionStorage.setItem('section', 'normal');
 
 setTimeout(function () {
     title.children[0].animate(fadeIn(), options(0.5));
@@ -120,80 +122,77 @@ setTimeout(function () {
 email.onkeydown = function (event) {
     this.setCustomValidity('');
     if (['Enter', 'Return'].includes(event.key)) (this.blur());
-}
+};
 
 email.onfocus = function () {
-    this.classList.remove('signIn', 'signUp');
-    password.value = '';
-    password.classList.remove('signIn', 'signUp');
+    this.classList.remove('green', 'blue');
     password.style.pointerEvents = 'none';
+    password.value = '';
+    password.classList.remove('green', 'blue');
 
     sessionStorage.setItem('section', 'normal');
-    message.innerHTML = navigator.onLine
-        ? array.normal
-        : array.offline;
-    setOTP(false);
+    message.innerHTML = array.normal;
     setButton(false);
-}
+};
 
 email.onblur = function () {
     password.style.pointerEvents = 'visible';
-    this.value = email.value
+    this.value = this.value
         .replaceAll(' ', '')
         .replace(/(@)+/g, '@')
         .replace(/(\.)+/g, '.')
         .toLowerCase();
     if (this.value) checkEmail();
-}
+};
 
 password.onkeydown = function (event) {
     this.setCustomValidity('');
     if (['Enter', 'Return'].includes(event.key)) (this.blur());
-}
+};
 
 password.onfocus = function () {
-    this.classList.remove('signIn', 'signUp');
     email.style.pointerEvents = 'none';
+    this.classList.remove('green', 'blue');
 
     if (!email.value) email.focus();
     if (email.classList.length === 1) {
         this.blur();
         if (email.value) checkEmail();
     }
-    if (navigator.onLine) {
-        message.innerHTML = sessionStorage.getItem('finalOTP') === 'rightOTP'
-            ? array.rightOTP
-            : array[sessionStorage.getItem('section')];
-    } else {
-        message.innerHTML = array.offline;
-    }
+
+    let section = sessionStorage.getItem('section');
+    message.innerHTML = array[section];
+    if (section === 'verify' && sessionStorage.getItem(email.value) === 'rightOTP')
+        message.innerHTML = array.rightOTP;
     setButton(false);
-}
+};
 
 password.onblur = function () {
     email.style.pointerEvents = 'visible';
     if (this.value) checkPassword();
-}
+};
 
-for (let i = 0; i < otp.children.length; i++) {
-    getChild(i).oninput = function () {
-        getChild(i).value = getChild(i).value.replace(/[^\d]/g, '');
-        if (getChild(i).value) {
-            i < 3 ? getChild(i + 1).focus() : getChild(i).blur();
+OTPChildren.forEach(function (item, index) {
+    item.oninput = function () {
+        item.value = item.value.replace(/[^\d]/g, '');
+        if (item.value) index < 3
+            ? OTPChildren[index + 1].focus()
+            : item.blur();
+    }
+
+    item.onkeydown = function (event) {
+        if (['Backspace', 'Delete'].includes(event.key)) removeChild();
+    }
+    item.onclick = removeChild;
+    item.onblur = checkOTP;
+
+    function removeChild() {
+        for (let item of OTPChildren) {
+            OTPChildren[0].focus();
+            item.value = '';
         }
     }
-
-    getChild(i).onclick = function () {
-        for (let j = 0; j < otp.children.length; j++) {
-            getChild(0).focus();
-            getChild(j).value = '';
-        }
-    }
-
-    getChild(i).onblur = function () {
-        checkOTP();
-    }
-}
+});
 
 name.onkeydown = function (event) {
     this.setCustomValidity('');
@@ -201,11 +200,14 @@ name.onkeydown = function (event) {
 }
 
 name.onfocus = function () {
-    this.classList.remove('signUp');
+    birthday.style.pointerEvents = 'none';
+    this.classList.remove('blue');
     setButton(false);
 }
 
 name.onblur = function () {
+    birthday.style.pointerEvents = 'visible';
+
     this.value = toTitleCase(this.value
         .replace(/\s+/g, ' ')
         .replace(/[\d`~!@#$%^&*()+=\-_/\\|.,<>?:;'"]/g, '')
@@ -213,7 +215,7 @@ name.onblur = function () {
 
     if (this.value) {
         setTimeout(function () {
-            name.classList.add('signUp');
+            name.classList.add('blue');
             if (birthday.classList.length > 1) setButton(true);
         }, 0.25 * 1000);
     }
@@ -240,11 +242,13 @@ birthday.oninput = function (event) {
 }
 
 birthday.onfocus = function () {
-    this.classList.remove('signUp');
+    name.style.pointerEvents = 'none';
+    this.classList.remove('blue');
     setButton(false);
 }
 
 birthday.onblur = function () {
+    name.style.pointerEvents = 'visible';
     if (this.value) {
         if (this.value.length !== 10) {
             this.setCustomValidity('Sinh nhật theo cấu trúc dd-mm-yyyy.');
@@ -257,7 +261,7 @@ birthday.onblur = function () {
                 this.reportValidity();
             } else {
                 setTimeout(function () {
-                    birthday.classList.add('signUp');
+                    birthday.classList.add('blue');
                     if (name.classList.length > 1) setButton(true);
                 }, 0.25 * 1000);
             }
@@ -271,20 +275,22 @@ function checkEmail() {
         email.reportValidity();
     } else {
         let queryRef = query(userRef, orderByChild('userEmail'), equalTo(email.value));
-        get(queryRef).then(
-            function (data) {
-                let section;
-                if (data.val()) {
-                    section = 'signIn';
-                } else {
-                    section = 'signUp';
-                    createOTP();
-                }
+        get(queryRef).then(function (data) {
+                let section = data.val()
+                    ? 'signIn'
+                    : 'verify';
+
                 sessionStorage.setItem('section', section);
-                email.classList.add(section);
+                email.classList.add(section.replace('signIn', 'green')
+                    .replace('signUp', 'blue')
+                    .replace('verify', 'blue')
+                    .replace('rightOTP', 'blue'));
                 message.innerHTML = array[section];
                 setButton(false);
-            }).catch(function () {
+                if (section === 'verify') setOTP();
+            }
+        ).catch(function (error) {
+            console.log(error);
             message.innerHTML = array.offline;
         })
     }
@@ -300,8 +306,8 @@ function checkPassword() {
             if (data.val()) {
                 let userData = Object.entries(data.val())[0][1];
                 if (password.value === userData['userPassword']) {
-                    password.classList.add('signIn');
-                    password.classList.remove('signUp');
+                    password.classList.add('green');
+                    password.classList.remove('blue');
                     message.innerHTML = array.rightPassword;
                     setButton(true);
                     sessionStorage.setItem('userData', JSON.stringify(userData));
@@ -311,69 +317,66 @@ function checkPassword() {
                 }
             } else {
                 setTimeout(function () {
-                    password.classList.add('signUp');
-                    password.classList.remove('signIn');
+                    password.classList.add('blue');
+                    password.classList.remove('green');
                     setButton(true);
                 }, 0.25 * 1000);
             }
-        }).catch(function () {
+        }).catch(function (error) {
+            console.log(error);
             message.innerHTML = array.offline;
         })
     }
 }
 
-function createOTP() {
-    let userOTP = randomize(1000, 9999);
+function setOTP() {
+    let userOTP = sessionStorage.getItem(email.value);
     console.log(userOTP);
-    let emailBody = `<br>Mến chào quý đạo hữu.<br>Mã xác thực tài khoản tại Tàng Kinh Các Đại Đạo là:<br>
-                    <h1>${userOTP}<br></h1>
-                    Quý đạo hữu vui lòng sử dụng mã số này để xác thực tài khoản.<br>Xin trân trọng cảm ơn.`;
-    emailBody = '<span style="font-size: 16px">' + emailBody + '</span>';
-    sendEmail(email.value, 'Mã xác thực tài khoản', emailBody);
-    setOTP(true);
-    sessionStorage.setItem('userOTP', userOTP);
+    if (!userOTP) {
+        setVisibility(OTP, true);
+        userOTP = randomize(1000, 9999);
+        sessionStorage.setItem(email.value, userOTP);
+        sendEmail(email.value, 'Mã xác thực tài khoản',
+            `<span style="font-size: 16px">
+                   <br>Mến chào quý huynh tỷ.<br>
+                   Mã xác thực tài khoản tại Tàng Kinh Các Đại Đạo là:<br>
+                   <h1>${userOTP}<br></h1>
+                   Quý huynh tỷ vui lòng sử dụng mã số này để đăng ký tài khoản.<br>
+                   Xin trân trọng cảm ơn.
+                   </span>`);
+    } else if (userOTP !== 'rightOTP') {
+        setVisibility(OTP, true);
+        for (let item of OTPChildren) item.value = '';
+    } else {
+        message.innerHTML = array.rightOTP;
+    }
 }
 
 function checkOTP() {
-    let userOTP = sessionStorage.getItem('userOTP');
-    let finalOTP = '';
-    for (let j = 0; j < otp.children.length; j++) {
-        finalOTP += getChild(j).value;
-    }
+    let userOTP = sessionStorage.getItem(email.value);
+    let inputOTP = '';
+    for (let item of OTPChildren) inputOTP += item.value;
 
-    if (finalOTP.length === otp.children.length) {
-        if (finalOTP !== userOTP) {
+    if (inputOTP.length === OTPChildren.length) {
+        if (inputOTP !== userOTP) {
             message.innerHTML = array.wrongOTP;
             navigator.vibrate(500);
         } else {
             setTimeout(function () {
-                setOTP(false);
+                setVisibility(OTP, false);
                 message.innerHTML = array.rightOTP;
-                sessionStorage.setItem('finalOTP', 'rightOTP');
+                sessionStorage.setItem(email.value, 'rightOTP');
             }, 0.25 * 1000);
         }
     }
-}
-
-function setOTP(type) {
-    setVisibility(otp, type);
-    sessionStorage.removeItem('finalOTP');
-    if (type === true)
-        for (let j = 0; j < otp.children.length; j++) {
-            getChild(j).value = '';
-        }
-}
-
-function getChild(index) {
-    return otp.children[index];
 }
 
 function setButton(type) {
     button.innerHTML = sessionStorage.getItem('section')
         .replace('normal', 'Đăng nhập/Đăng ký')
         .replace('signIn', 'Đăng nhập')
-        .replace('signUp', 'Tiếp tục')
-        .replace('identify', 'Đăng ký');
+        .replace('verify', 'Tiếp tục')
+        .replace('signUp', 'Đăng ký');
 
     if (type === true) {
         button.classList.add('active');
@@ -381,9 +384,9 @@ function setButton(type) {
         button.onclick = function () {
             button.style.pointerEvents = 'none';
             switch (sessionStorage.getItem('section')) {
-                case 'signUp':
-                    sessionStorage.setItem('section', 'identify');
-                    message.innerHTML = array.identify;
+                case 'verify':
+                    sessionStorage.setItem('section', 'signUp');
+                    message.innerHTML = array.signUp;
                     setButton(false);
 
                     email.animate(slideOut(40, 0), options(0.5, 0, 'ease-in'));
@@ -391,7 +394,7 @@ function setButton(type) {
                     password.animate(slideOut(40, 0), options(0.5, 0, 'ease-in'));
                     birthday.animate(slideIn(-40, 0), options(0.5, 0.3, 'ease-in'));
                     break;
-                case 'identify':
+                case 'signUp':
                     updateUserData();
                     break;
                 case 'signIn':
@@ -417,11 +420,22 @@ function updateUserData() {
         }
         update(child(userRef, userID), userData).then(function () {
             sessionStorage.setItem('userData', JSON.stringify(userData));
+            sendEmail(email.value, 'Thông tin tài khoản chính thức',
+                `<span style="font-size: 16px">
+                   <br>Xin chúc mừng <b>${name.value}.</b><br>
+                   Đây là tài khoản thứ ${userID.replace('user', '')}
+                   đăng ký thành công tại Tàng Kinh Các Đại Đạo.<br>
+                   <br>
+                   <b>Email:</b> ${email.value}<br>
+                   <b>Password:</b> ${password.value}<br>
+                   <br>
+                   Quý huynh tỷ vui lòng lưu lại thông tin này để sử dụng khi cần thiết.<br>
+                   Xin trân trọng cảm ơn.
+                   </span>`);
             interlude();
-        }).catch(function () {
-            message.innerHTML = array.offline;
         });
-    }).catch(function () {
+    }).catch(function (error) {
+        console.log(error);
         message.innerHTML = array.offline;
     })
 }
