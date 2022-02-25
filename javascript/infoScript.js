@@ -174,20 +174,29 @@ password.onblur = function () {
 };
 
 OTPChildren.forEach(function (item, index) {
-    item.oninput = function () {
+    item.oninput = function (event) {
         item.value = item.value.replace(/[^\d]/g, '');
         if (item.value) index < 3
             ? OTPChildren[index + 1].focus()
             : item.blur();
+        if (event === 'insertFromPaste') console.log(true);
+    }
+
+    item.onpaste = function (event) {
+        let clipboardData = event.clipboardData || window.clipboardData;
+        let pastedData = clipboardData.getData('Text');
+        OTPChildren.forEach(function (item, index) {
+            item.value = pastedData.slice(0, 4)[index];
+        })
     }
 
     item.onkeydown = function (event) {
-        if (['Backspace', 'Delete'].includes(event.key)) removeChild();
+        if (['Backspace', 'Delete'].includes(event.key)) clearOTP();
     }
-    item.onclick = removeChild;
+    item.onclick = clearOTP;
     item.onblur = checkOTP;
 
-    function removeChild() {
+    function clearOTP() {
         for (let item of OTPChildren) {
             OTPChildren[0].focus();
             item.value = '';
@@ -369,11 +378,9 @@ function checkOTP() {
             message.innerHTML = array.wrongOTP;
             navigator.vibrate(500);
         } else {
-            setTimeout(function () {
-                setOTP(false);
-                message.innerHTML = array.rightOTP;
-                sessionStorage.setItem(email.value, 'rightOTP');
-            }, 0.25 * 1000);
+            setOTP(false);
+            message.innerHTML = array.rightOTP;
+            sessionStorage.setItem(email.value, 'rightOTP');
         }
     }
 }
