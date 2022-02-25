@@ -23,13 +23,13 @@ function removeObject(object, name) {
     document.getElementById(`${name}Style`).remove();
 }
 
-//alert(screen.width + '/' + screen.height + ',' + outerWidth + '/' + outerHeight);
-
 function setSize(object, marginDesktop, marginMobile) {
     let width = Math.min(screen.width, screen.height);
     let height = Math.max(screen.width, screen.height);
     let widthRatio = width / 450;
     let heightRatio = height / 850;
+
+    //alert(screen.width + '/' + screen.height + ',' + outerWidth + '/' + outerHeight);
 
     window.scroll(0, 0);
     height < 600
