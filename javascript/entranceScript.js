@@ -40,7 +40,7 @@ children[6].animate(fadeIn(), options(0.5, 3.2)).onfinish = function () {
 function interlude() {
     let backgroundAudio = document.createElement('audio');
     backgroundAudio.src = '../media/PlayTheGuqinInTheNight.mp3';
-    backgroundAudio.volume = 0.7;
+    backgroundAudio.volume = 0.9;
     backgroundAudio.preload;
     backgroundAudio.loop = true;
     backgroundAudio.play().then(function () {
