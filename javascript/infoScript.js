@@ -341,8 +341,6 @@ function checkPassword() {
 function setOTP(type) {
     if (type === true) {
         let userOTP = sessionStorage.getItem(email.value);
-        console.log(userOTP);
-
         if (!userOTP) {
             setVisibility(OTP, true);
             userOTP = randomize(1000, 9999);
