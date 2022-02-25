@@ -31,6 +31,9 @@
     background-repeat: no-repeat;
 
     -webkit-tap-highlight-color: transparent;
+}
+
+*:not(input) {
     user-select: none;
     -webkit-user-select: none;
 }

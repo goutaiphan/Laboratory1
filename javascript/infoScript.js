@@ -135,6 +135,10 @@ email.onfocus = function () {
     setButton(false);
 };
 
+email.onclick = function () {
+    console.log(true);
+}
+
 email.onblur = function () {
     password.style.pointerEvents = 'visible';
     this.value = this.value
@@ -271,7 +275,7 @@ birthday.onblur = function () {
 
 function checkEmail() {
     if (!email.value.match(/\S+@\S+\.\S+/)) {
-        email.setCustomValidity('Email theo cấu trúc aa@bb.cc');
+        email.setCustomValidity('Email theo cấu trúc aaa@bbb.ccc');
         email.reportValidity();
     } else {
         let queryRef = query(userRef, orderByChild('userEmail'), equalTo(email.value));
