@@ -31,7 +31,7 @@ function setSize(object, marginDesktop, marginMobile) {
     let widthRatio = width / 450;
     let heightRatio = height / 850;
 
-    window.scroll(0,0);
+    window.scroll(0, 0);
     if (height < 600) {
         document.body.style.width = '100vmin';
         document.body.style.height = 'min-content';
@@ -40,6 +40,7 @@ function setSize(object, marginDesktop, marginMobile) {
         document.body.style.minHeight = '90vh';
     }
 
+    alert([document.body.offsetHeight, object.offsetHeight]);
     if (width < 1080) {
         if (width > 450) widthRatio = widthRatio * 0.7;
         if (height > 800) object.style.marginTop = marginMobile * heightRatio + 'px';
