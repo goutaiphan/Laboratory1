@@ -33,9 +33,9 @@ function setSize(object, marginDesktop, marginMobile) {
 
     window.scroll(0, 0);
     height < 600
-        ? document.body.style.maxHeight = height + 25 + 'px'
+        ? document.body.style.maxHeight = height * 90 / 100 + 'px'
         : document.body.style.minHeight = '90vh';
-    
+
     if (width < 1080) {
         if (width > 450) widthRatio = widthRatio * 0.7;
         if (height > 800) object.style.marginTop = marginMobile * heightRatio + 'px';
