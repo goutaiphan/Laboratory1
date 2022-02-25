@@ -39,17 +39,18 @@ children[6].animate(fadeIn(), options(0.5, 3.2)).onfinish = function () {
 
 function interlude() {
     let backgroundAudio = document.createElement('audio');
-    backgroundAudio.src = '../media/FreeTheMindInNature - WuNuo.mp3';
+    backgroundAudio.src = '../media/PlayTheGuqinInTheNight.mp3';
     backgroundAudio.volume = 0.7;
     backgroundAudio.preload;
-    // backgroundAudio.play().then(function () {
-    //     console.log('Bài hát đã chạy thành công.');
-    // });
-    // document.body.append(backgroundAudio);
+    backgroundAudio.loop = true;
+    backgroundAudio.play().then(function () {
+        console.log('Bài hát đã chạy thành công.');
+    });
+    document.body.append(backgroundAudio);
 
     area.animate(fadeOut(), options(0.5)).onfinish = function () {
-        // appendObject('intro');
-        appendObject('welcome');
+        appendObject('intro');
+        //appendObject('welcome');
         removeObject(area, 'entrance');
     }
 }
