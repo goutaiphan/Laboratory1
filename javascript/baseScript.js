@@ -31,6 +31,7 @@ function setSize(object, marginDesktop, marginMobile) {
     let widthRatio = width / 450;
     let heightRatio = height / 850;
 
+    alert(height);
     window.scroll(0, 0);
     if (height < 600) {
         // document.body.style.minWidth = '100vw';
