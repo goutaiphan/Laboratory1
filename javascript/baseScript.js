@@ -33,7 +33,7 @@ function setSize(object, marginDesktop, marginMobile) {
 
     window.scroll(0, 0);
     height < 600
-        ? document.body.style.maxHeight = height * 90 / 100 + 'px'
+        ? document.body.style.maxHeight = height + 'px'
         : document.body.style.minHeight = '90vh';
 
     if (width < 1080) {
