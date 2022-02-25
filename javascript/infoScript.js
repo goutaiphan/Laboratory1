@@ -179,7 +179,6 @@ OTPChildren.forEach(function (item, index) {
         if (item.value) index < 3
             ? OTPChildren[index + 1].focus()
             : item.blur();
-        if (event === 'insertFromPaste') console.log(true);
     }
 
     item.onpaste = function (event) {
