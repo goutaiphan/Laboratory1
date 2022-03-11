@@ -1,7 +1,8 @@
 import {appendSection, removeSection} from "./baseScript.js";
 import {bounce, fade, resize, option} from "./animationScript.js";
 
-let userData = JSON.parse(sessionStorage.getItem('userData'));
+// let userData = JSON.parse(sessionStorage.getItem('userData'));
+let userData = {userName: 'Tĩnh Tâm', userID: '1'};
 let array0 = [`Xin chào mừng<br><span class="userName">${userData.userName}</span><br>`,
     `đã quay trở lại<br>cùng chư huynh đệ<br><span>Tàng Kinh Các Đại Đạo.</span>`];
 let array1 = [`Xin chúc mừng<br><span class="userName">${userData.userName}</span>`,
@@ -9,16 +10,16 @@ let array1 = [`Xin chúc mừng<br><span class="userName">${userData.userName}</
     đăng ký thành công tại<br><span>Tàng Kinh Các Đại Đạo.</span>`,
     `<span>Thông tin tài khoản</span> đã gửi<br>qua <span>email,</span>
     quý huynh tỷ<br>vui lòng lưu lại để sử dụng<br>khi cần thiết.`];
-let array2 = [`Chương trình <span>Niềm vui<br>tu Đạo</span> đang trong<br>giai đoạn <span>chuẩn bị,</span><br>`,
-    `<span>Tiểu Dần</span> sẽ thông báo<br>đến quý huynh tỷ khi<br>chương trình <span>ra mắt.</span><br>
-    Xin trân trọng cảm ơn.`];
-// let array2 = [`Chương trình <span>Niềm vui<br>tu Đạo</span> lần này sẽ bao gồm<br><span>15 câu hỏi,</span>`,
-//     `nếu trả lời <span>chính xác</span> trong thời gian <span>càng ngắn,</span><br>quý huynh tỷ sẽ đạt điểm <span>càng cao.</span>`,
-//     `<span>Tiểu Dần</span> mến chúc quý huynh tỷ thật nhiều may mắn.<br>
-//     Quý huynh tỷ đã sẵn sàng để <span>bắt đầu</span> chứ?`];
+// let array2 = [`Chương trình <span>Niềm vui<br>tu Đạo</span> đang trong<br>giai đoạn <span>chuẩn bị,</span><br>`,
+//     `<span>Tiểu Dần</span> sẽ thông báo<br>đến quý huynh tỷ khi<br>chương trình <span>ra mắt.</span><br>
+//     Xin trân trọng cảm ơn.`];
+let array2 = [`Chương trình <span>Niềm vui<br>tu Đạo</span> lần này sẽ bao gồm<br><span>15 câu hỏi,</span>`,
+    `nếu trả lời <span>chính xác</span> trong thời gian <span>càng ngắn,</span><br>quý huynh tỷ sẽ đạt điểm <span>càng cao.</span>`,
+    `<span>Tiểu Dần</span> mến chúc quý huynh tỷ thật nhiều may mắn.<br>
+    Quý huynh tỷ đã sẵn sàng để <span>bắt đầu</span> chứ?`];
 
-let section = sessionStorage.getItem('section');
-// let section = 'signIn';
+// let section = sessionStorage.getItem('section');
+let section = 'signIn';
 let array = section === 'signIn'
     ? array0.concat(array2)
     : array1.concat(array2);
@@ -67,12 +68,16 @@ function setClick() {
             message.animate(fade(), option(0.5));
             window.onclick = setClick;
         };
-    } else setInterlude();
+    } else {
+        board.append(button);
+        button.animate(fade(), option(0.5));
+        button.onclick = setInterlude;
+    }
 }
 
 function setInterlude() {
     // appendSection('welcome');
-    // area.animate(fade(false), option(0.5)).onfinish = function () {
-    //     removeSection(area, 'welcome');
-    // }
+    area.animate(fade(false), option(0.5)).onfinish = function () {
+        removeSection(area, 'welcome');
+    }
 }

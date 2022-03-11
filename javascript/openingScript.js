@@ -41,8 +41,8 @@ function setInterlude() {
     document.body.append(backgroundAudio);
 
     children[6].onclick = null;
-    appendSection('intro');
-    // appendSection('info');
+    // appendSection('intro');
+    appendSection('welcome');
     area.animate(fade(false), option(0.5)).onfinish = function () {
         removeSection(area, 'opening');
     }
