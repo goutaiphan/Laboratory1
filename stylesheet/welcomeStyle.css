@@ -11,7 +11,7 @@
 
     border-radius: 5px;
     border: 2px solid #c9bcb1;
-    background-color: #fdf9f1;
+    background-color: #fffbf7;
 }
 
 .message {
@@ -24,7 +24,7 @@
     font-size: 30px;
 }
 
-button {
+.button {
     width: 80%;
     height: 55px;
     margin: 40px 0 0;

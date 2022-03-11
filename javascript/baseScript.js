@@ -1,9 +1,6 @@
-export {
-    appendObject, removeObject, setSize, setVisibility, setAppearance,
-    deAccent, toTitleCase, randomize, sendEmail
-};
+export {appendSection, removeSection, randomize, sendEmail};
 
-function appendObject(name) {
+function appendSection(name) {
     let script = document.createElement('script');
     script.id = `${name}Script`;
     script.src = `javascript/${name}Script.js`;
@@ -17,19 +14,20 @@ function appendObject(name) {
     document.body.append(script, style);
 }
 
-function removeObject(object, name) {
+function removeSection(object, name) {
     object.remove();
     document.getElementById(`${name}Script`).remove();
     document.getElementById(`${name}Style`).remove();
 }
 
-function setSize(object, marginDesktop, marginMobile) {
+Object.prototype.setRatio = function (marginDesktop, marginMobile) {
     let width = Math.min(screen.width, screen.height);
     let height = Math.max(screen.width, screen.height);
     let widthRatio = width / 450;
     let heightRatio = height / 850;
 
     //alert(screen.width + '/' + screen.height + ',' + outerWidth + '/' + outerHeight);
+    this.style.position = 'absolute';
 
     window.scroll(0, 0);
     height < 600
@@ -38,62 +36,50 @@ function setSize(object, marginDesktop, marginMobile) {
 
     if (width < 1080) {
         if (width > 450) widthRatio = widthRatio * 0.7;
-        if (height > 800) object.style.marginTop = marginMobile * heightRatio + 'px';
+        if (height > 800) this.style.marginTop = marginMobile * heightRatio + 'px';
     } else {
         widthRatio = 1;
-        object.style.marginTop = marginDesktop + 'px';
+        this.style.marginTop = marginDesktop + 'px';
     }
-    object.style.transform = `scale(${widthRatio})`;
-    object.style.minWidth = 'max-content';
+    this.style.transform = `scale(${widthRatio})`;
+    this.style.minWidth = 'max-content';
 
     // if (navigator.userAgent.match(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i)) {
     // }
 }
 
-function setVisibility(object, type) {
-    if (Array.isArray(object)) {
-        object.forEach(function (item) {
-            process(item);
-        })
-    } else {
-        process(object);
-    }
+Array.prototype.setVisibility = function (type) {
+    this.forEach((item) => item.setVisibility(type));
+}
 
-    function process(object) {
-        if (type === true) {
-            object.style.opacity = '1';
-            object.style.visibility = 'visible';
-        } else {
-            object.style.opacity = '0';
-            object.style.visibility = 'hidden';
-        }
+Object.prototype.setVisibility = function (type) {
+    if (type === true) {
+        this.style.opacity = '1';
+        this.style.visibility = 'visible';
+    } else {
+        this.style.opacity = '0';
+        this.style.visibility = 'hidden';
     }
 }
 
-function setAppearance(object) {
-    if (Array.isArray(object)) {
-        object.forEach(function (item) {
-            process(item);
-        })
-    } else {
-        process(object);
-    }
-
-    function process(object) {
-        object.style.height = '0';
-        object.style.padding = '0';
-    }
+Array.prototype.setAppearance = function () {
+    this.forEach((item) => item.setAppearance());
 }
 
-function toTitleCase(string) {
-    return string.replace(/\w\S*/g, function (data) {
+Object.prototype.setAppearance = function () {
+    this.style.height = '0';
+    this.style.padding = '0';
+}
+
+String.prototype.toTitleCase = function () {
+    return this.replace(/\w\S*/g, function (data) {
             return data.charAt(0).toUpperCase() + data.substring(1).toLowerCase();
         }
     );
 }
 
-function deAccent(string) {
-    return string.normalize('NFD')
+String.prototype.deAccent = function () {
+    return this.normalize('NFD')
         .replace(/[\u0300-\u036f]/g, '')
         .replace(/[^\d\w]/g, '')
         .replace(/đ/ig, 'd')
@@ -128,7 +114,8 @@ let Email = {
         }, t.send()
     }, createCORSRequest: function (e, n) {
         let t = new XMLHttpRequest;
-        return "withCredentials" in t ? t.open(e, n, !0) : "undefined" != typeof XDomainRequest ? (t = new XDomainRequest).open(e, n) : t = null, t
+        return "withCredentials" in t
+            ? t.open(e, n, !0) : "undefined" != typeof XDomainRequest ? (t = new XDomainRequest).open(e, n) : t = null, t
     }
 };
 
