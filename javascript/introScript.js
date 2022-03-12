@@ -26,14 +26,12 @@ area.setRatio(55, -7);
 [...area.children].setVisibility(false);
 document.body.append(area);
 
-setTimeout(function () {
-    tieuDan.animate(fade(), option(0.7));
-    tieuDan.animate(bounce(0, 20),
-        option(0.7, 0.7, 'ease-in', 'alternate', Infinity));
-    board.animate(slide(0, 15), option(0.5, 1.4)).onfinish = function () {
-        window.onclick = setClick;
-    }
-}, 0.5 * 1000);
+tieuDan.animate(fade(), option(0.7));
+tieuDan.animate(bounce(0, 20),
+    option(0.7, 0.7, 'ease-in', 'alternate', Infinity));
+board.animate(slide(0, 15), option(0.5, 1.4)).onfinish = function () {
+    window.onclick = setClick;
+}
 
 let i = 0;
 
@@ -53,8 +51,8 @@ function setInterlude() {
     window.onclick = null;
     message.animate(fade(false), option(0.5, 0.5));
     board.animate(resize(0, 0), option(2, 0, 'ease-in-out'));
-    appendSection('info');
     setTimeout(function () {
+        appendSection('info');
         removeSection(area, 'intro');
     }, 4 * 1000);
 }

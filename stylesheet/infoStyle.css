@@ -15,7 +15,7 @@
     margin: 2px auto 52px;
 }
 
-.board0 {
+.board {
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
@@ -109,7 +109,7 @@
     margin: 40px 0 0;
 }
 
-.button0 {
+.button {
     width: 100%;
     height: 100%;
 
@@ -119,17 +119,17 @@
     background-color: lightgray;
 }
 
-.button0.active {
+.button.active {
     color: #4f3419;
     background-color: #e7d8be;
     cursor: pointer;
 }
 
-.button0.active:active {
+.button.active:active {
     transform: scale(0.95);
 }
 
-.message0 {
+.message {
     width: 350px;
     margin: auto;
     font-size: 20px;

@@ -69,7 +69,7 @@ for (let i = 0; i < 4; i++) {
 let OTPChildren = [...OTP.children];
 
 let button = document.createElement('button');
-button.className = 'button0';
+button.className = 'button';
 button.innerHTML = 'Đăng nhập/Đăng ký';
 
 let buttonBox = document.createElement('div');
@@ -87,11 +87,11 @@ birthday.placeholder = 'dd-mm-yyyy';
 birthday.maxLength = 10;
 
 let board = document.createElement('div');
-board.className = 'board0';
+board.className = 'board';
 board.append(email, password, OTP, name, birthday, buttonBox);
 
 let message = document.createElement('div');
-message.className = 'message0';
+message.className = 'message';
 message.innerHTML = array.normal;
 
 let area = document.createElement('div');
@@ -101,15 +101,13 @@ area.setRatio(45, -10);
 document.body.append(area);
 sessionStorage.setItem('section', 'normal');
 
-setTimeout(function () {
-    title.children[0].animate(fade(), option(0.5));
-    title.children[1].animate(fade(), option(0.5, 0.4));
-    board.animate(fade(), option(0.5, 0.6, 'ease-in'));
-    email.animate(slide(-40, 0), option(0.5, 0.6, 'ease-in'));
-    password.animate(slide(-40, 0), option(0.5, 0.8, 'ease-in'));
-    buttonBox.animate(slide(-40, 0), option(0.5, 1, 'ease-in'));
-    message.animate(fade(), option(0.5, 1.2));
-}, 4 * 1000);
+title.children[0].animate(fade(), option(0.5));
+title.children[1].animate(fade(), option(0.5, 0.4));
+board.animate(fade(), option(0.5, 0.6, 'ease-in'));
+email.animate(slide(-40, 0), option(0.5, 0.6, 'ease-in'));
+password.animate(slide(-40, 0), option(0.5, 0.8, 'ease-in'));
+buttonBox.animate(slide(-40, 0), option(0.5, 1, 'ease-in'));
+message.animate(fade(), option(0.5, 1.2));
 
 email.onkeydown = function (event) {
     this.setCustomValidity('');
@@ -454,8 +452,8 @@ function updateUserData() {
 }
 
 function setInterlude() {
-    appendSection('welcome');
     area.animate(fade(false), option(0.5)).onfinish = function () {
+        appendSection('welcome');
         removeSection(area, 'info');
     };
 }

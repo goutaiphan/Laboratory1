@@ -1,5 +1,5 @@
 import {appendSection, removeSection} from "./baseScript.js";
-import {bounce, fade, resize, option} from "./animationScript.js";
+import {bounce, fade, resize, option, slide} from "./animationScript.js";
 
 // let userData = JSON.parse(sessionStorage.getItem('userData'));
 let userData = {userName: 'Tĩnh Tâm', userID: '1'};
@@ -45,17 +45,15 @@ area.setRatio(55, -10);
 [board, message, tieuDan].setVisibility(false);
 document.body.append(area);
 
-setTimeout(function () {
-    board.setAppearance();
-    tieuDan.animate(fade(), option(0.7));
-    tieuDan.animate(bounce(0, 20),
-        option(0.7, 0.7, 'ease-in', 'alternate', Infinity));
-    message.animate(fade(), option(0.5, 4.3));
-    board.animate(resize(390, '0 30px 40px'), option(2, 3.8, 'ease-in-out'))
-        .onfinish = function () {
-        window.onclick = setClick;
-    }
-}, 0.5 * 1000);
+board.setAppearance();
+tieuDan.animate(fade(), option(0.7));
+tieuDan.animate(bounce(0, 20),
+    option(0.7, 0.7, 'ease-in', 'alternate', Infinity));
+message.animate(fade(), option(0.5, 4.3));
+board.animate(resize(390, '0 30px 40px'), option(2, 3.8, 'ease-in-out'))
+    .onfinish = function () {
+    window.onclick = setClick;
+};
 
 let i = 0;
 
@@ -69,15 +67,18 @@ function setClick() {
             window.onclick = setClick;
         };
     } else {
-        board.append(button);
-        button.animate(fade(), option(0.5));
-        button.onclick = setInterlude;
+        message.animate(fade(false), option(0.5)).onfinish = function () {
+            message.remove();
+            button.animate(fade(), option(0.5));
+            button.onclick = setInterlude;
+            board.append(button);
+        };
     }
 }
 
 function setInterlude() {
-    // appendSection('welcome');
     area.animate(fade(false), option(0.5)).onfinish = function () {
+        // appendSection('welcome');
         removeSection(area, 'welcome');
     }
 }
