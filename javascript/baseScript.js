@@ -32,12 +32,12 @@ Object.prototype.setRatio = function () {
 
     if (width < 1080) {
         if (width > 450) widthRatio = widthRatio * 0.7;
-        } else {
+    } else {
         widthRatio = 1;
     }
     this.style.transform = `scale(${widthRatio})`;
     this.style.maxWidth = '450px';
-    this.style.padding = '20px 5vmax 30px';
+    this.style.padding = '25px 5vmax';
 
     // if (navigator.userAgent.match(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i)) {
     // }
