@@ -40,7 +40,7 @@ Object.prototype.setRatio = function (marginDesktop, marginMobile) {
         this.style.marginTop = marginDesktop + 'px';
     }
     this.style.transform = `scale(${widthRatio})`;
-    this.style.maxWidth = '500px';
+    this.style.maxWidth = '450px';
     this.style.position = 'absolute';
 
     // if (navigator.userAgent.match(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i)) {
