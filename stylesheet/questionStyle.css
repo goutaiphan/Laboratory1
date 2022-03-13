@@ -1,5 +1,5 @@
 .part {
-    margin-bottom: 45px;
+    margin-bottom: 50px;
     padding-bottom: 8px;
 
     font-family: 'PlayfairDisplay', serif;
@@ -23,7 +23,7 @@
     flex-flow: column wrap;
     align-items: center;
     justify-content: center;
-    margin-bottom: 45px;
+    margin-bottom: 50px;
 }
 
 .response button {
