@@ -45,7 +45,7 @@ body {
     justify-content: center;
     align-items: center;
     margin: auto;
-    padding: min(5vmax, 25px) 30px;
+    padding: min(5vmax, 25px) 25px;
 }
 
 span {
