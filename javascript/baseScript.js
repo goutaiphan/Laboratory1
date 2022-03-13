@@ -18,7 +18,7 @@ Object.prototype.setSection = function (name0, name1) {
     document.body.append(script, style);
 }
 
-Object.prototype.setRatio = function (marginDesktop, marginMobile) {
+Object.prototype.setRatio = function () {
     let width = Math.min(screen.width, screen.height);
     let height = Math.max(screen.width, screen.height);
     let widthRatio = width / 450;
@@ -32,13 +32,12 @@ Object.prototype.setRatio = function (marginDesktop, marginMobile) {
 
     if (width < 1080) {
         if (width > 450) widthRatio = widthRatio * 0.7;
-        if (height > 800) this.style.marginTop = marginMobile * heightRatio + 'px';
-    } else {
+        } else {
         widthRatio = 1;
-        this.style.marginTop = marginDesktop + 'px';
     }
     this.style.transform = `scale(${widthRatio})`;
     this.style.maxWidth = '450px';
+    this.style.padding = '5vmax 25px';
 
     // if (navigator.userAgent.match(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i)) {
     // }

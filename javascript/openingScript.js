@@ -16,7 +16,7 @@ for (let i = 0; i < array.length; i++) {
     child.setVisibility(false);
     area.append(child);
 }
-area.setRatio(20, -30);
+area.setRatio();
 document.body.append(area);
 
 let children = area.children;
