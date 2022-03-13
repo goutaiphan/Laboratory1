@@ -37,7 +37,7 @@ question.animate(fade(), option(0.5, 0.5));
 for (let i = 0; i < 4; i++) {
     children[i].animate(slide(-40, 0), option(0.5, 1 + 0.3 * i));
 }
-button.animate(zoom(1.2, 1), option(0.5, 1 + 1.4)).onfinish = () => {
+button.animate(zoom(1.1, 1), option(0.5, 1 + 1.4)).onfinish = () => {
     children.forEach((item, index) => {
         item.style.cursor = 'pointer';
         item.onclick = () => {

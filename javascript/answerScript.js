@@ -41,7 +41,7 @@ result.innerHTML = array[type];
 resultChildren[0].animate(slide(-40, 0), option(0.5));
 resultChildren[1].animate(slide(40, 0), option(0.5));
 answer.animate(fade(), option(0.5, 0.5));
-button.animate(zoom(1.2, 1), option(0.5, 1)).onfinish = function () {
+button.animate(zoom(1.1, 1), option(0.5, 1)).onfinish = function () {
     button.style.cursor = 'pointer';
     button.onclick = () => {
         button.onclick = null;
