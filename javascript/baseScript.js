@@ -37,7 +37,7 @@ Object.prototype.setRatio = function () {
     }
     this.style.transform = `scale(${widthRatio})`;
     this.style.maxWidth = '450px';
-    this.style.padding = '5vmax 25px';
+    this.style.padding = '20px 5vmax 30px';
 
     // if (navigator.userAgent.match(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i)) {
     // }
