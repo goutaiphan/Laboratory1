@@ -35,9 +35,9 @@ Object.prototype.setRatio = function () {
     } else {
         widthRatio = 1;
     }
+    this.style.padding = '25px 5vmax';
     this.style.transform = `scale(${widthRatio})`;
     this.style.maxWidth = '450px';
-    this.style.padding = '25px 5vmax';
 
     // if (navigator.userAgent.match(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i)) {
     // }
