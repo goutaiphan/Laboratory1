@@ -28,7 +28,7 @@ button.innerHTML = 'Tiếp tục';
 let area = document.createElement('div');
 area.className = 'area';
 area.append(result, answer, button);
-area.setRatio(30, -45);
+area.setRatio(30, 0);
 [...resultChildren, answer, button].setVisibility(false);
 document.body.append(area);
 
