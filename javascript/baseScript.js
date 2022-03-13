@@ -35,7 +35,7 @@ Object.prototype.setRatio = function () {
     } else {
         widthRatio = 1;
     }
-    this.style.padding = '25px 5vmax';
+    this.style.padding = '5vmax 25px';
     this.style.transform = `scale(${widthRatio})`;
     this.style.maxWidth = '450px';
 
