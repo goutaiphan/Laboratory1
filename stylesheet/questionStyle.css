@@ -3,7 +3,7 @@
     padding-bottom: 8px;
 
     font-family: 'PlayfairDisplay', serif;
-    font-size: 35px;
+    font-size: 33px;
     text-align: start;
     transform: scale(1.05, 1);
 
@@ -13,7 +13,7 @@
 
 .question {
     margin-bottom: 50px;
-    font-size: 23px;
+    font-size: 22px;
     line-height: 1.7;
     white-space: normal;
 }
