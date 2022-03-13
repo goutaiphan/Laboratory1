@@ -1,0 +1,63 @@
+.part {
+    margin-bottom: 40px;
+    padding-bottom: 8px;
+
+    font-family: 'PlayfairDisplay', serif;
+    font-size: 35px;
+    text-align: start;
+    transform: scale(1.05, 1);
+
+    color: #5d3b1a;
+    border-bottom: 2px solid #c9bcb1;
+}
+
+.question {
+    margin-bottom: 50px;
+    font-size: 23px;
+    line-height: 1.7;
+    white-space: normal;
+}
+
+.response {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 45px;
+}
+
+.response button {
+    width: 85%;
+    height: 55px;
+    margin-bottom: 15px;
+    padding: 0 25px;
+
+    font-size: 21px;
+    line-height: 1.7;
+    text-align: start;
+
+    border-radius: 5px;
+    border: 2px solid #c9bcb1;
+    background-color: #fffbf7;
+    cursor: pointer;
+}
+
+.response button.active {
+    border: 2px solid #a8c2cb;
+    background-color: #f7fdff;
+}
+
+.button {
+    width: 200px;
+    height: 52px;
+    font-size: 21px;
+    color: gray;
+    background-color: lightgray;
+    border-radius: 5px;
+}
+
+.button.active {
+    color: #fffbf7;
+    background-color: #c9bcb1;
+    cursor: pointer;
+}

@@ -11,8 +11,8 @@ for (let i = 0; i < array.length; i++) {
     let child = i === array.indexOf('Tham gia')
     ? document.createElement('button')
     : document.createElement('div');
-    child.innerHTML = array[i];
     child.className = 'area';
+    child.innerHTML = array[i];
     child.setVisibility(false);
     area.append(child);
 }
@@ -43,7 +43,7 @@ function setInterlude() {
     children[6].onclick = null;
     area.animate(fade(false), option(0.5)).onfinish = function () {
         // appendSection('intro');
-        appendSection('welcome');
+        appendSection('question');
         removeSection(area, 'opening');
     }
 }

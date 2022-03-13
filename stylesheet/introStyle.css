@@ -1,6 +1,6 @@
 .board {
     display: flex;
-    flex-flow: column nowrap;
+    flex-flow: column wrap;
     align-items: center;
     justify-content: center;
 
@@ -17,7 +17,7 @@
 .message {
     font-size: 21px;
     line-height: 1.7;
-    word-wrap: break-word;
+    white-space: normal;
 }
 
 .tieuDan {

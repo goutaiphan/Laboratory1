@@ -46,7 +46,7 @@ let array = {
 
 let title = document.createElement('div');
 title.className = 'title';
-title.innerHTML = '<p>Tàng Kinh Các</p><p>Đại Đạo</p>';
+title.innerHTML = '<div>Tàng Kinh Các</div><div>Đại Đạo</div>';
 
 let email = document.createElement('input');
 email.className = 'email';
@@ -68,13 +68,12 @@ for (let i = 0; i < 4; i++) {
 }
 let OTPChildren = [...OTP.children];
 
-let button = document.createElement('button');
-button.className = 'button';
-button.innerHTML = 'Đăng nhập/Đăng ký';
+let buttonChild = document.createElement('button');
+buttonChild.innerHTML = 'Đăng nhập/Đăng ký';
 
-let buttonBox = document.createElement('div');
-buttonBox.className = 'buttonBox';
-buttonBox.append(button);
+let button = document.createElement('div');
+button.className = 'button';
+button.append(buttonChild);
 
 let name = document.createElement('input');
 name.className = 'name';
@@ -88,7 +87,7 @@ birthday.maxLength = 10;
 
 let board = document.createElement('div');
 board.className = 'board';
-board.append(email, password, OTP, name, birthday, buttonBox);
+board.append(email, password, OTP, name, birthday, button);
 
 let message = document.createElement('div');
 message.className = 'message';
@@ -106,7 +105,7 @@ title.children[1].animate(fade(), option(0.5, 0.4));
 board.animate(fade(), option(0.5, 0.6, 'ease-in'));
 email.animate(slide(-40, 0), option(0.5, 0.6, 'ease-in'));
 password.animate(slide(-40, 0), option(0.5, 0.8, 'ease-in'));
-buttonBox.animate(slide(-40, 0), option(0.5, 1, 'ease-in'));
+button.animate(slide(-40, 0), option(0.5, 1, 'ease-in'));
 message.animate(fade(), option(0.5, 1.2));
 
 email.onkeydown = function (event) {
@@ -383,16 +382,16 @@ function checkBirthday() {
 }
 
 function setButton(type) {
-    button.innerHTML = sessionStorage.getItem('section')
+    buttonChild.innerHTML = sessionStorage.getItem('section')
         .replace('normal', 'Đăng nhập/Đăng ký')
         .replace('signIn', 'Đăng nhập')
         .replace('verify', 'Tiếp tục')
         .replace('signUp', 'Đăng ký');
 
     if (type === true) {
-        button.classList.add('active');
-        button.onclick = function () {
-            button.onclick = null;
+        buttonChild.classList.add('active');
+        buttonChild.onclick = function () {
+            buttonChild.onclick = null;
             switch (sessionStorage.getItem('section')) {
                 case 'verify':
                     sessionStorage.setItem('section', 'signUp');
@@ -413,8 +412,8 @@ function setButton(type) {
             }
         }
     } else {
-        button.classList.remove('active');
-        button.onclick = null;
+        buttonChild.classList.remove('active');
+        buttonChild.onclick = null;
     }
 }
 
@@ -429,7 +428,7 @@ function updateUserData() {
             userAlias: name.value.replaceAll(' ', '').toLowerCase(),
             userBirthday: birthday.value
         }
-        update(child(userRef, userID), userData).then(function () {
+        update(buttonChild(userRef, userID), userData).then(function () {
             sessionStorage.setItem('userData', JSON.stringify(userData));
             sendEmail(email.value, 'Thông tin tài khoản chính thức',
                 `<span style="font-size: 16px">
