@@ -8,7 +8,7 @@
     transform: scale(1.05, 1);
 
     color: #5d3b1a;
-    border-bottom: 2px solid #c9bcb1;
+    border-bottom: 2px solid #c7b6a7;
 }
 
 .question {
@@ -26,7 +26,7 @@
     margin-bottom: 50px;
 }
 
-.response button {
+.responseChild {
     width: 85%;
     height: 55px;
     margin-bottom: 15px;
@@ -37,27 +37,36 @@
     text-align: start;
 
     border-radius: 5px;
-    border: 2px solid #c9bcb1;
+    border: 2px solid #c7b6a7;
     background-color: #fffbf7;
-    cursor: pointer;
 }
 
-.response button.active {
+.responseChild.active {
+    color: #47788a;
     border: 2px solid #a8c2cb;
     background-color: #f7fdff;
+}
+
+.responseChild:active {
+    transform: scale(2);
 }
 
 .button {
     width: 200px;
     height: 53px;
     font-size: 20px;
-    color: gray;
-    background-color: lightgray;
+    border: 2px solid #c7b6a7;
+    background-color: #fffbf7;
     border-radius: 5px;
 }
 
 .button.active {
-    color: #fffbf7;
-    background-color: #b79d87;
+    color: #47788a;
+    border: 2px solid #a8c2cb;
+    background-color: #f7fdff;
     cursor: pointer;
+}
+
+.button.active:active {
+    transform: scale(0.95);
 }

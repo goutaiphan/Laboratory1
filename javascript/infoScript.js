@@ -452,7 +452,7 @@ function updateUserData() {
 
 function setInterlude() {
     area.animate(fade(false), option(0.5)).onfinish = function () {
-        appendSection('welcome');
         removeSection(area, 'info');
+        appendSection('welcome');
     };
 }

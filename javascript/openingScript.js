@@ -42,8 +42,8 @@ function setInterlude() {
 
     children[6].onclick = null;
     area.animate(fade(false), option(0.5)).onfinish = function () {
-        // appendSection('intro');
-        appendSection('question');
         removeSection(area, 'opening');
+        appendSection('intro');
+        // appendSection('question');
     }
 }

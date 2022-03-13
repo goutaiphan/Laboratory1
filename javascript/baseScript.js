@@ -27,8 +27,6 @@ Object.prototype.setRatio = function (marginDesktop, marginMobile) {
     let heightRatio = height / 850;
 
     //alert(screen.width + '/' + screen.height + ',' + outerWidth + '/' + outerHeight);
-
-    this.style.position = 'absolute';
     window.scroll(0, 0);
     height < 600
         ? document.body.style.maxHeight = height + 'px'

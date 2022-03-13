@@ -52,7 +52,7 @@ function setInterlude() {
     message.animate(fade(false), option(0.5, 0.5));
     board.animate(resize(0, 0), option(2, 0, 'ease-in-out'));
     setTimeout(function () {
-        appendSection('info');
         removeSection(area, 'intro');
+        appendSection('info');
     }, 4 * 1000);
 }

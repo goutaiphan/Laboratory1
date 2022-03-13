@@ -20,6 +20,7 @@ response.className = 'response';
 for (let i = 0; i < 4; i++) {
     let child = document.createElement('button');
     child.innerHTML = array[i];
+    child.className = 'responseChild';
     response.append(child);
 }
 let children = [...response.children];
@@ -39,8 +40,9 @@ question.animate(fade(), option(0.5, 0.5));
 for (let i = 0; i < 4; i++) {
     children[i].animate(slide(-40, 0), option(0.5, 1 + 0.3 * i));
 }
-button.animate(fade(), option(0.5, 1 + 1.4)).onfinish = ()=>{
+button.animate(fade(), option(0.5, 1 + 1.4)).onfinish = () => {
     children.forEach((item, index) => {
+        item.style.cursor = 'pointer';
         item.onclick = () => {
             sessionStorage.setItem('Câu 1', index.toString());
             children.forEach((item) => item.classList.remove('active'));

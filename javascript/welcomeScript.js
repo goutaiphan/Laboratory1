@@ -78,7 +78,7 @@ function setClick() {
 
 function setInterlude() {
     area.animate(fade(false), option(0.5)).onfinish = function () {
-        appendSection('question');
         removeSection(area, 'welcome');
+        appendSection('question');
     }
 }
