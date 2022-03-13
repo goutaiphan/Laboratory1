@@ -1,4 +1,4 @@
-import {appendSection, removeSection} from "./baseScript.js";
+import {} from "./baseScript.js";
 import {option, fade, slide, bounce, resize} from "./animationScript.js";
 
 let array = [`Mến chào quý huynh tỷ,<br>đệ là <span>Tiểu Dần</span>.`,
@@ -48,11 +48,9 @@ function setClick() {
 }
 
 function setInterlude() {
-    window.onclick = null;
     message.animate(fade(false), option(0.5, 0.5));
     board.animate(resize(0, 0), option(2, 0, 'ease-in-out'));
     setTimeout(function () {
-        removeSection(area, 'intro');
-        appendSection('info');
+        area.setSection('intro','info');
     }, 4 * 1000);
 }

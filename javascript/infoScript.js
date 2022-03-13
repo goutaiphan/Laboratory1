@@ -1,5 +1,5 @@
-import {appendSection, removeSection, randomize, sendEmail} from "./baseScript.js";
-import {option, fade, slide} from "./animationScript.js";
+import {randomize, sendEmail} from "./baseScript.js";
+import {option, fade, slide, pump} from "./animationScript.js";
 import {initializeApp} from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
 import {
     getDatabase,
@@ -282,7 +282,7 @@ function checkPassword() {
                     password.classList.add('blue');
                     password.classList.remove('green');
                     setButton(true);
-                }, 0.25 * 1000);
+                }, 0.2 * 1000);
             }
         }).catch(function (error) {
             console.log(error);
@@ -294,6 +294,7 @@ function checkPassword() {
 function setOTP(type) {
     if (type === true) {
         let userOTP = sessionStorage.getItem(email.value);
+        console.log(typeof userOTP);
         if (!userOTP) {
             OTP.setVisibility(true);
             userOTP = randomize(1000, 9999);
@@ -324,14 +325,16 @@ function checkOTP() {
     for (let item of OTPChildren) inputOTP += item.value;
 
     if (inputOTP.length === OTPChildren.length) {
-        if (inputOTP !== userOTP) {
-            message.innerHTML = array.wrongOTP;
-            navigator.vibrate(500);
-        } else {
-            setOTP(false);
-            message.innerHTML = array.rightOTP;
-            sessionStorage.setItem(email.value, 'rightOTP');
-        }
+        setTimeout(() => {
+            if (inputOTP !== userOTP) {
+                message.innerHTML = array.wrongOTP;
+                navigator.vibrate(500);
+            } else {
+                setOTP(false);
+                message.innerHTML = array.rightOTP;
+                sessionStorage.setItem(email.value, 'rightOTP');
+            }
+        }, 0.2 * 1000);
     }
 }
 
@@ -353,7 +356,7 @@ function checkName() {
                 setTimeout(function () {
                     name.classList.add('blue');
                     if (birthday.classList.length > 1) setButton(true);
-                }, 0.25 * 1000);
+                }, 0.2 * 1000);
             }
         }
     ).catch(function (error) {
@@ -376,7 +379,7 @@ function checkBirthday() {
             setTimeout(function () {
                 birthday.classList.add('blue');
                 if (name.classList.length > 1) setButton(true);
-            }, 0.25 * 1000);
+            }, 0.2 * 1000);
         }
     }
 }
@@ -390,27 +393,34 @@ function setButton(type) {
 
     if (type === true) {
         buttonChild.classList.add('active');
-        buttonChild.onclick = function () {
-            buttonChild.onclick = null;
-            switch (sessionStorage.getItem('section')) {
-                case 'verify':
-                    sessionStorage.setItem('section', 'signUp');
-                    message.innerHTML = array.signUp;
-                    setButton(false);
+        setTimeout(function () {
+            buttonChild.style.cursor = 'pointer';
+            buttonChild.onclick = function () {
+                buttonChild.onclick = null;
+                buttonChild.animate(pump(0.95),
+                    option(0.2, 0, 'linear', 'alternate', 2));
+                switch (sessionStorage.getItem('section')) {
+                    case 'verify':
+                        setTimeout(function () {
+                            sessionStorage.setItem('section', 'signUp');
+                            message.innerHTML = array.signUp;
+                            setButton(false);
 
-                    email.animate(slide(40, 0, false), option(0.5, 0, 'ease-in'));
-                    password.animate(slide(40, 0, false), option(0.5, 0, 'ease-in'));
-                    name.animate(slide(-40, 0), option(0.5, 0.3, 'ease-in'));
-                    birthday.animate(slide(-40, 0), option(0.5, 0.3, 'ease-in'));
-                    break;
-                case 'signUp':
-                    updateUserData();
-                    break;
-                case 'signIn':
-                    setInterlude();
-                    break;
-            }
-        }
+                            email.animate(slide(40, 0, false), option(0.5));
+                            password.animate(slide(40, 0, false), option(0.5));
+                            name.animate(slide(-40, 0), option(0.5, 0.2));
+                            birthday.animate(slide(-40, 0), option(0.5, 0.2));
+                        }, 0.2 * 1000);
+                        break;
+                    case 'signUp':
+                        updateUserData();
+                        break;
+                    case 'signIn':
+                        setInterlude();
+                        break;
+                }
+            };
+        }, 0.5 * 1000);
     } else {
         buttonChild.classList.remove('active');
         buttonChild.onclick = null;
@@ -428,7 +438,7 @@ function updateUserData() {
             userAlias: name.value.replaceAll(' ', '').toLowerCase(),
             userBirthday: birthday.value
         }
-        update(buttonChild(userRef, userID), userData).then(function () {
+        update(child(userRef, userID), userData).then(function () {
             sessionStorage.setItem('userData', JSON.stringify(userData));
             sendEmail(email.value, 'Thông tin tài khoản chính thức',
                 `<span style="font-size: 16px">
@@ -451,8 +461,7 @@ function updateUserData() {
 }
 
 function setInterlude() {
-    area.animate(fade(false), option(0.5)).onfinish = function () {
-        removeSection(area, 'info');
-        appendSection('welcome');
+    area.animate(fade(false), option(0.5, 0.2)).onfinish = function () {
+        area.setSection('info','welcome');
     };
 }

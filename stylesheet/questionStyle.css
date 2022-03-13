@@ -7,7 +7,7 @@
     text-align: start;
     transform: scale(1.05, 1);
 
-    color: #5d3b1a;
+    color: #4f3419;
     border-bottom: 2px solid #c7b6a7;
 }
 
@@ -26,8 +26,8 @@
     margin-bottom: 50px;
 }
 
-.responseChild {
-    width: 85%;
+.response button {
+    width: 100%;
     height: 55px;
     margin-bottom: 15px;
     padding: 0 25px;
@@ -35,38 +35,23 @@
     font-size: 20px;
     line-height: 1.7;
     text-align: start;
-
-    border-radius: 5px;
-    border: 2px solid #c7b6a7;
-    background-color: #fffbf7;
-}
-
-.responseChild.active {
-    color: #47788a;
-    border: 2px solid #a8c2cb;
-    background-color: #f7fdff;
-}
-
-.responseChild:active {
-    transform: scale(2);
 }
 
 .button {
     width: 200px;
     height: 53px;
     font-size: 20px;
-    border: 2px solid #c7b6a7;
-    background-color: #fffbf7;
+}
+
+button {
     border-radius: 5px;
+    border: 2px solid #c7b6a7;
+    background-image: linear-gradient(to left, #fffbf7 50%, #f8efe0 50%);
+    background-size: 200% 100%;
+    background-position: right;
+    transition: 0.5s ease-out;
 }
 
-.button.active {
-    color: #47788a;
-    border: 2px solid #a8c2cb;
-    background-color: #f7fdff;
-    cursor: pointer;
-}
-
-.button.active:active {
-    transform: scale(0.95);
+button.active {
+    background-position: left;
 }

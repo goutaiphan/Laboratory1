@@ -1,5 +1,5 @@
-import {appendSection, removeSection} from "./baseScript.js";
-import {bounce, fade, resize, option, slide} from "./animationScript.js";
+import {} from "./baseScript.js";
+import {bounce, fade, resize, option, pump} from "./animationScript.js";
 
 // let userData = JSON.parse(sessionStorage.getItem('userData'));
 let userData = {userName: 'Tĩnh Tâm', userID: '1'};
@@ -69,16 +69,19 @@ function setClick() {
     } else {
         message.animate(fade(false), option(0.5)).onfinish = function () {
             message.remove();
-            button.animate(fade(), option(0.5));
-            button.onclick = setInterlude;
             board.append(button);
+            button.animate(fade(), option(0.5));
+            button.onclick = () => {
+                button.animate(pump(0.95),
+                    option(0.2, 0, 'linear', 'alternate', 2));
+                setInterlude();
+            };
         };
     }
 }
 
 function setInterlude() {
-    area.animate(fade(false), option(0.5)).onfinish = function () {
-        removeSection(area, 'welcome');
-        appendSection('question');
+    area.animate(fade(false), option(0.5, 0.2)).onfinish = function () {
+        area.setSection('welcome','question');
     }
 }

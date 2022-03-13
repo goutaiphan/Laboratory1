@@ -1,0 +1,47 @@
+.result {
+    margin-bottom: 50px;
+    padding-bottom: 50px;
+    border-bottom: 2px solid;
+}
+
+.result div:first-of-type {
+    margin-bottom: 9px;
+    font-family: 'PlayfairDisplay', serif;
+    font-size: 35px;
+}
+
+.result div:last-of-type {
+    font-size: 22px;
+    color: black;
+}
+
+.answer {
+    min-width: 390px;
+    margin-bottom: 50px;
+
+    font-size: 20.5px;
+    line-height: 1.7;
+    text-align: justify;
+    white-space: normal;
+    color: black;
+}
+
+.button {
+    width: 200px;
+    height: 53px;
+    font-size: 20px;
+
+    border: 2px solid;
+    border-radius: 5px;
+    color: black;
+}
+
+.right {
+    color: #416c33;
+    border-color: #8b9f85;
+}
+
+.wrong {
+    color: #3b3e81;
+    border-color: #8989a2;
+}

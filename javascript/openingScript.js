@@ -1,4 +1,4 @@
-import {appendSection, removeSection} from "./baseScript.js";
+import {} from "./baseScript.js";
 import {option, fade, slide, pump} from "./animationScript.js";
 
 let area = document.createElement('div');
@@ -9,8 +9,8 @@ let array = ['Niềm', 'vui', 'tu', 'Đạo',
 
 for (let i = 0; i < array.length; i++) {
     let child = i === array.indexOf('Tham gia')
-    ? document.createElement('button')
-    : document.createElement('div');
+        ? document.createElement('button')
+        : document.createElement('div');
     child.className = 'area';
     child.innerHTML = array[i];
     child.setVisibility(false);
@@ -34,7 +34,7 @@ children[6].animate(fade(), option(0.5, 3.2)).onfinish = function () {
 
 function setInterlude() {
     let backgroundAudio = document.querySelector('#backgroundAudio');
-    backgroundAudio.volume = 0.7;
+    backgroundAudio.volume = 0.8;
     backgroundAudio.play().then(function () {
         console.log('Nhạc nền đã phát thành công.');
     });
@@ -42,8 +42,6 @@ function setInterlude() {
 
     children[6].onclick = null;
     area.animate(fade(false), option(0.5)).onfinish = function () {
-        removeSection(area, 'opening');
-        appendSection('intro');
-        // appendSection('question');
+        area.setSection('opening', 'question');
     }
 }

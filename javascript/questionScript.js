@@ -1,5 +1,5 @@
-import {appendSection, removeSection} from "./baseScript.js";
-import {fade, option, slide} from "./animationScript.js";
+import {} from "./baseScript.js";
+import {fade, option, pump, slide, zoom} from "./animationScript.js";
 
 let array = [`Ngày 09-09 nguyệt lịch.`,
     `Ngày 09-01 nguyệt lịch.`,
@@ -18,10 +18,7 @@ question.innerHTML = `Thánh Lễ của Đức Ngọc Hoàng Thượng Đế th�
 let response = document.createElement('div');
 response.className = 'response';
 for (let i = 0; i < 4; i++) {
-    let child = document.createElement('button');
-    child.innerHTML = array[i];
-    child.className = 'responseChild';
-    response.append(child);
+    response.innerHTML += `<button>${array[i]}</button>`;
 }
 let children = [...response.children];
 
@@ -40,15 +37,30 @@ question.animate(fade(), option(0.5, 0.5));
 for (let i = 0; i < 4; i++) {
     children[i].animate(slide(-40, 0), option(0.5, 1 + 0.3 * i));
 }
-button.animate(fade(), option(0.5, 1 + 1.4)).onfinish = () => {
+button.animate(zoom(1.1, 1), option(0.5, 1 + 1.4)).onfinish = () => {
     children.forEach((item, index) => {
         item.style.cursor = 'pointer';
         item.onclick = () => {
             sessionStorage.setItem('Câu 1', index.toString());
             children.forEach((item) => item.classList.remove('active'));
-            item.classList.add('active');
-            button.classList.add('active');
+            [item, button].addClass('active');
+            setTimeout(function () {
+                button.style.transition = 'none';
+                button.style.cursor = 'pointer';
+                button.onclick = () => {
+                    button.onclick = null;
+                    button.animate(pump(0.95),
+                        option(0.2, 0, 'linear', 'alternate', 2));
+                    setInterlude();
+                };
+            }, 0.5 * 1000);
         }
-    })
+    });
 };
+
+function setInterlude() {
+    area.animate(fade(false), option(0.5,0.2)).onfinish = () => {
+        area.setSection('question','answer');
+    }
+}
 

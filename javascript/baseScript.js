@@ -1,23 +1,21 @@
-export {appendSection, removeSection, randomize, sendEmail};
+export {randomize, sendEmail};
 
-function appendSection(name) {
+Object.prototype.setSection = function (name0, name1) {
+    this.remove();
+    document.getElementById(`${name0}Script`).remove();
+    document.getElementById(`${name0}Style`).remove();
+
     let script = document.createElement('script');
-    script.id = `${name}Script`;
-    script.src = `javascript/${name}Script.js`;
+    script.id = `${name1}Script`;
+    script.src = `javascript/${name1}Script.js`;
     script.type = 'module';
 
     let style = document.createElement('link');
-    style.id = `${name}Style`;
-    style.href = `stylesheet/${name}Style.css`;
+    style.id = `${name1}Style`;
+    style.href = `stylesheet/${name1}Style.css`;
     style.rel = 'stylesheet';
 
     document.body.append(script, style);
-}
-
-function removeSection(object, name) {
-    object.remove();
-    document.getElementById(`${name}Script`).remove();
-    document.getElementById(`${name}Style`).remove();
 }
 
 Object.prototype.setRatio = function (marginDesktop, marginMobile) {
@@ -41,6 +39,7 @@ Object.prototype.setRatio = function (marginDesktop, marginMobile) {
     }
     this.style.transform = `scale(${widthRatio})`;
     this.style.maxWidth = '450px';
+    this.style.padding = '0 30px 0';
 
     // if (navigator.userAgent.match(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i)) {
     // }
@@ -67,6 +66,10 @@ Array.prototype.setAppearance = function () {
 Object.prototype.setAppearance = function () {
     this.style.height = '0';
     this.style.padding = '0';
+}
+
+Array.prototype.addClass = function (name) {
+    this.forEach((item) => item.classList.add(name));
 }
 
 String.prototype.toTitleCase = function () {
