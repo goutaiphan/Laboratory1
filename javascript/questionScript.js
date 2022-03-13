@@ -30,7 +30,7 @@ button.innerHTML = 'Xác nhận';
 
 let area = document.createElement('div');
 area.append(part, question, response, button);
-area.setRatio(-10, -20);
+area.setRatio(-10, -30);
 [part, question, children, button].setVisibility(false);
 document.body.append(area);
 
