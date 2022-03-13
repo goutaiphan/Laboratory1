@@ -28,6 +28,7 @@ Object.prototype.setRatio = function (marginDesktop, marginMobile) {
 
     //alert(screen.width + '/' + screen.height + ',' + outerWidth + '/' + outerHeight);
 
+    this.style.position = 'absolute';
     window.scroll(0, 0);
     height < 600
         ? document.body.style.maxHeight = height + 'px'
@@ -42,7 +43,6 @@ Object.prototype.setRatio = function (marginDesktop, marginMobile) {
     }
     this.style.transform = `scale(${widthRatio})`;
     this.style.maxWidth = '450px';
-    this.style.position = 'absolute';
 
     // if (navigator.userAgent.match(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i)) {
     // }
