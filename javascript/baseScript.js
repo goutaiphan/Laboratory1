@@ -29,8 +29,8 @@ Object.prototype.setRatio = function () {
     console.log([width, height]);
 
     height < 900
-        ? this.style.minHeight = height * 90 / 100 + 'px'
-        : this.style.minHeight = width * 90 / 100 + 'px';
+        ? this.style.minHeight = height * 85 / 100 + 'px'
+        : this.style.minHeight = width * 85 / 100 + 'px';
     width < 450
         ? this.style.width = width + 'px'
         : this.style.width = '450px';
