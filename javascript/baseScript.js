@@ -31,9 +31,9 @@ Object.prototype.setRatio = function () {
     height < 900
         ? this.style.height = height * 85 / 100 + 'px'
         : this.style.height = width * 85 / 100 + 'px';
-    // width < 450
-    //     ? this.style.width = width + 'px'
-    //     : this.style.width = '450px';
+    width < 450
+        ? this.style.width = width + 'px'
+        : this.style.width = '450px';
     let widthRatio = width >= 1080
         ? 1
         : width > 450 ? width / 450 * 0.7
@@ -46,7 +46,7 @@ Object.prototype.setRatio = function () {
     this.style.flexFlow = 'column wrap';
     this.style.alignItems = 'center';
     this.style.justifyContent = 'center';
-    this.style.margin = '0 auto';
+    this.style.margin = 'auto';
 
     // if (navigator.userAgent.match(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i)) {
     // }
