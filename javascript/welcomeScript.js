@@ -15,8 +15,7 @@ let array1 = [`Xin chúc mừng<br><span class="userName">${userData.userName}</
 //     Xin trân trọng cảm ơn.`];
 let array2 = [`Chương trình <span>Niềm vui<br>tu Đạo</span> lần này sẽ bao gồm<br><span>15 câu hỏi,</span>`,
     `nếu trả lời <span>chính xác</span> trong thời gian <span>càng ngắn,</span><br>quý huynh tỷ sẽ đạt điểm <span>càng cao.</span>`,
-    `<span>Tiểu Dần</span> mến chúc quý huynh tỷ thật nhiều may mắn.<br>
-    Quý huynh tỷ đã sẵn sàng để <span>bắt đầu</span> chứ?`];
+    `<span>Tiểu Dần</span> mến chúc quý huynh tỷ thật nhiều may mắn. Quý huynh tỷ đã sẵn sàng để <span>bắt đầu</span> chứ?`];
 
 // let section = sessionStorage.getItem('section');
 let section = 'signIn';
