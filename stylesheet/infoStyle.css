@@ -119,7 +119,7 @@
     color: gray;
 
     border-radius: 5px;
-    background-image: linear-gradient(to left, lightgray 50%, #eadac5 50%);
+    background-image: linear-gradient(to left, lightgray 50%, #decfbb 50%);
     background-size: 200% 100%;
     background-position: right;
     transition: 0.5s ease-out;
