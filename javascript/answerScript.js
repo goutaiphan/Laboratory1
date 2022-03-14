@@ -26,11 +26,10 @@ button.className = 'button';
 button.innerHTML = 'Tiếp tục';
 
 let area = document.createElement('div');
-area.className = 'area';
 area.append(result, answer, button);
 area.setRatio();
-[...resultChildren, answer, button].setVisibility(false);
 document.body.append(area);
+[...resultChildren, answer, button].setVisibility(false);
 
 let type = sessionStorage.getItem('Câu 1') === '1'
     ? 'right'

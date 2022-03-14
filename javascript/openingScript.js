@@ -18,6 +18,7 @@ for (let i = 0; i < array.length; i++) {
 }
 area.setRatio();
 document.body.append(area);
+console.log(getComputedStyle(area).getPropertyValue('height'));
 
 let children = area.children;
 children[0].animate(fade(), option(0.5, 0.5));
@@ -42,6 +43,6 @@ function setInterlude() {
 
     children[6].onclick = null;
     area.animate(fade(false), option(0.5)).onfinish = function () {
-        area.setSection('opening', 'question');
+        area.setSection('opening', 'intro');
     }
 }

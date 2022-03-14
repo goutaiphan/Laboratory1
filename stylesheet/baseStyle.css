@@ -29,8 +29,8 @@
     background-color: transparent;
     background-size: contain;
     background-repeat: no-repeat;
-    white-space: nowrap;
 
+    word-break: break-word;
     -webkit-tap-highlight-color: transparent;
 }
 
@@ -39,15 +39,7 @@
     -webkit-user-select: none;
 }
 
-body {
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-}
-
 span {
     font-size: inherit;
-    color: #4f3419;
+    color: #794e26;
 }

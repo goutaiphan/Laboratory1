@@ -1,5 +1,4 @@
 .title div {
-    width: 95%;
     margin: 0 auto;
 
     font-family: 'PlayfairDisplay', serif;
@@ -7,7 +6,7 @@
     line-height: 1.4;
     transform: scale(1.05, 1);
 
-    background-image: linear-gradient(to right, #363636, #744d26 90%);
+    background-image: linear-gradient(to top right, #363636, #744d26 60%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -16,13 +15,19 @@
     margin: 2px auto 52px;
 }
 
+.message {
+    width: 88%;
+    font-size: 20px;
+    line-height: 1.7;
+}
+
 .board {
     display: flex;
-    flex-flow: column nowrap;
+    flex-flow: column wrap;
     align-items: center;
     justify-content: start;
 
-    width: 350px;
+    width: 88%;
     height: 345px;
     margin: 0 auto 55px;
     padding: 25px 0 0;
@@ -109,31 +114,18 @@
     width: 75%;
     height: 55px;
     margin: 40px 0 0;
-}
-
-.button button {
-    width: 100%;
-    height: 100%;
 
     font-size: 20px;
     color: gray;
 
     border-radius: 5px;
-    background-image: linear-gradient(to left, lightgray 50%, #e7d8be 50%);
+    background-image: linear-gradient(to left, lightgray 50%, #eadac5 50%);
     background-size: 200% 100%;
     background-position: right;
     transition: 0.5s ease-out;
 }
 
-.button button.active {
+.button.active {
     color: #4f3419;
     background-position: left;
-}
-
-.message {
-    width: 350px;
-    margin: auto;
-    font-size: 20px;
-    line-height: 1.7;
-    word-wrap: break-word;
 }

@@ -4,9 +4,8 @@
     align-items: center;
     justify-content: center;
 
-    width: 360px;
+    width: 90%;
     height: 390px;
-    margin: auto;
     padding: 0 30px 40px;
 
     border-radius: 5px;
@@ -17,7 +16,6 @@
 .message {
     font-size: 21px;
     line-height: 1.7;
-    white-space: normal;
 }
 
 .userName {
@@ -32,13 +30,13 @@
 }
 
 .button {
-    width: 80%;
+    width: 85%;
     height: 55px;
     margin: 40px 0 25px;
 
-    font-size: 19.5px;
+    font-size: 20px;
     border-radius: 5px;
     color: #4f3419;
-    background-color: #e7d8be;
+    background-color: #eadac5;
     cursor: pointer;
 }

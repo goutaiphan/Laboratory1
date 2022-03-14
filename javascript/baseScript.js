@@ -1,9 +1,11 @@
+// noinspection CommaExpressionJS
+
 export {randomize, sendEmail};
 
 Object.prototype.setSection = function (name0, name1) {
     this.remove();
-    document.getElementById(`${name0}Script`).remove();
-    document.getElementById(`${name0}Style`).remove();
+    document.querySelector(`#${name0}Script`).remove();
+    document.querySelector(`#${name0}Style`).remove();
 
     let script = document.createElement('script');
     script.id = `${name1}Script`;
@@ -21,23 +23,27 @@ Object.prototype.setSection = function (name0, name1) {
 Object.prototype.setRatio = function () {
     let width = Math.min(screen.width, screen.height);
     let height = Math.max(screen.width, screen.height);
-    let widthRatio = width / 450;
-    let heightRatio = height / 850;
 
-    //alert(screen.width + '/' + screen.height + ',' + outerWidth + '/' + outerHeight);
+    // alert(screen.width + '/' + screen.height + ',' + outerWidth + '/' + outerHeight);
     window.scroll(0, 0);
-    height < 600
-        ? document.body.style.maxHeight = height + 'px'
-        : document.body.style.minHeight = '90vh';
+    height < 850
+        ? this.style.maxHeight = height + 'px'
+        : this.style.height = width * 85 / 100 + 'px';
 
-    if (width < 1080) {
-        if (width > 450) widthRatio = widthRatio * 0.7;
-    } else {
-        widthRatio = 1;
-    }
-    this.style.padding = '3vmax 25px 5vmax';
+    let widthRatio = width >= 1080
+        ? 1
+        : width > 450 ? width / 450 * 0.7
+            : width / 450;
+    // let heightRatio = height / 850;
+    this.style.width = '450px';
+    this.style.padding = '0 25px';
     this.style.transform = `scale(${widthRatio})`;
-    this.style.maxWidth = '450px';
+
+    this.style.display = 'flex';
+    this.style.flexFlow = 'column wrap';
+    this.style.alignItems = 'center';
+    this.style.justifyContent = 'center';
+    this.style.margin = '0 auto';
 
     // if (navigator.userAgent.match(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i)) {
     // }

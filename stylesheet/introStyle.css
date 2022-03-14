@@ -4,11 +4,9 @@
     align-items: center;
     justify-content: center;
 
-    width: 360px;
+    width: 90%;
     height: 390px;
-    margin: auto;
     padding: 0 30px 40px;
-
     border-radius: 5px;
     border: 2px solid #c9bcb1;
     background-color: #fffbf7;
@@ -17,7 +15,6 @@
 .message {
     font-size: 21px;
     line-height: 1.7;
-    white-space: normal;
 }
 
 .tieuDan {

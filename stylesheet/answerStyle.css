@@ -1,4 +1,5 @@
 .result {
+    width: 100%;
     margin-bottom: 50px;
     padding-bottom: 50px;
     border-bottom: 2px solid;
@@ -20,7 +21,6 @@
     font-size: 20.5px;
     line-height: 1.7;
     text-align: justify;
-    white-space: normal;
     color: black;
 }
 

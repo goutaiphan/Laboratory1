@@ -30,8 +30,8 @@ let array = {
         huynh tỷ vui lòng điền <span>mật khẩu</span><br>để đăng nhập tài khoản.`,
     wrongPassword: `Mật khẩu <span>chưa chính xác,</span><br>
         quý huynh tỷ vui lòng <span>kiểm tra</span><br>thông tin tài khoản qua email.`,
-    rightPassword: `Mật khẩu <span>chính xác,</span><br>
-        quý huynh tỷ vui lòng <span>đăng nhập</span><br>để tham gia chương trình.`,
+    rightPassword: `Mật khẩu <span>chính xác,</span> quý<br>
+        huynh tỷ vui lòng <span>đăng nhập</span><br>để tham gia chương trình.`,
     verify: `<span>Mã xác thực</span> đã gửi qua <span>email,</span><br>
         quý huynh tỷ vui lòng sử dụng<br>để <span>đăng ký</span> tài khoản.`,
     wrongOTP: `Mã xác thực <span>chưa chính xác,</span><br>
@@ -68,12 +68,9 @@ for (let i = 0; i < 4; i++) {
 }
 let OTPChildren = [...OTP.children];
 
-let buttonChild = document.createElement('button');
-buttonChild.innerHTML = 'Đăng nhập/Đăng ký';
-
-let button = document.createElement('div');
+let button = document.createElement('button');
 button.className = 'button';
-button.append(buttonChild);
+button.innerHTML = 'Đăng nhập/Đăng ký';
 
 let name = document.createElement('input');
 name.className = 'name';
@@ -95,9 +92,9 @@ message.innerHTML = array.normal;
 
 let area = document.createElement('div');
 area.append(title, board, message);
-area.setRatio(45, -10);
-[...title.children, board, ...board.children, message].setVisibility(false);
+area.setRatio();
 document.body.append(area);
+[...title.children, board, ...board.children, message].setVisibility(false);
 sessionStorage.setItem('section', 'normal');
 
 title.children[0].animate(fade(), option(0.5));
@@ -294,7 +291,6 @@ function checkPassword() {
 function setOTP(type) {
     if (type === true) {
         let userOTP = sessionStorage.getItem(email.value);
-        console.log(typeof userOTP);
         if (!userOTP) {
             OTP.setVisibility(true);
             userOTP = randomize(1000, 9999);
@@ -385,19 +381,19 @@ function checkBirthday() {
 }
 
 function setButton(type) {
-    buttonChild.innerHTML = sessionStorage.getItem('section')
+    button.innerHTML = sessionStorage.getItem('section')
         .replace('normal', 'Đăng nhập/Đăng ký')
         .replace('signIn', 'Đăng nhập')
         .replace('verify', 'Tiếp tục')
         .replace('signUp', 'Đăng ký');
 
     if (type === true) {
-        buttonChild.classList.add('active');
+        button.classList.add('active');
         setTimeout(function () {
-            buttonChild.style.cursor = 'pointer';
-            buttonChild.onclick = function () {
-                buttonChild.onclick = null;
-                buttonChild.animate(pump(0.95),
+            button.style.cursor = 'pointer';
+            button.onclick = function () {
+                button.onclick = null;
+                button.animate(pump(0.95),
                     option(0.2, 0, 'linear', 'alternate', 2));
                 switch (sessionStorage.getItem('section')) {
                     case 'verify':
@@ -422,8 +418,8 @@ function setButton(type) {
             };
         }, 0.5 * 1000);
     } else {
-        buttonChild.classList.remove('active');
-        buttonChild.onclick = null;
+        button.classList.remove('active');
+        button.onclick = null;
     }
 }
 

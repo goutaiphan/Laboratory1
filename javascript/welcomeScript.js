@@ -41,16 +41,16 @@ tieuDan.className = 'tieuDan';
 
 let area = document.createElement('div');
 area.append(board, tieuDan);
-area.setRatio(55, -10);
-[board, message, tieuDan].setVisibility(false);
+area.setRatio();
 document.body.append(area);
-
+[board, message, tieuDan].setVisibility(false);
 board.setAppearance();
+
 tieuDan.animate(fade(), option(0.7));
 tieuDan.animate(bounce(0, 20),
     option(0.7, 0.7, 'ease-in', 'alternate', Infinity));
 message.animate(fade(), option(0.5, 4.3));
-board.animate(resize(390, '0 30px 40px'), option(2, 3.8, 'ease-in-out'))
+board.animate(resize('390px', '0 30px 40px'), option(2, 3.8, 'ease-in-out'))
     .onfinish = function () {
     window.onclick = setClick;
 };

@@ -102,7 +102,7 @@ function resize(height, padding) {
         }, {
             opacity: 1,
             visibility: 'visible',
-            height: height + 'px',
+            height: height,
             padding: padding
         }];
     }
