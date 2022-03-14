@@ -6,7 +6,7 @@
     line-height: 1.4;
     transform: scale(1.05, 1);
 
-    background-image: linear-gradient(to top right, #363636, #744d26 40%);
+    background-image: linear-gradient(to top right, #363636 40%, #744d26 60%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
