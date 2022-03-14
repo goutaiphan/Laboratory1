@@ -1,14 +1,10 @@
 .title div {
     margin: 0 auto;
-
     font-family: 'PlayfairDisplay', serif;
     font-size: 50px;
     line-height: 1.4;
     transform: scale(1.05, 1);
-
-    background-image: linear-gradient(to top right, #363636 40%, #744d26 60%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #4f3419;
 }
 
 .title div:last-child {
