@@ -18,7 +18,7 @@ for (let i = 0; i < array.length; i++) {
 }
 area.setRatio();
 document.body.append(area);
-console.log(getComputedStyle(area).getPropertyValue('height'));
+alert(getComputedStyle(area).getPropertyValue('width'));
 
 let children = area.children;
 children[0].animate(fade(), option(0.5, 0.5));

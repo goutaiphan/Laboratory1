@@ -36,9 +36,9 @@ Object.prototype.setRatio = function () {
         : width > 450 ? width / 450 * 0.7
             : width / 450;
     // let heightRatio = height / 850;
+    this.style.width = '450px';
     this.style.padding = '0 25px';
     this.style.transform = `scale(${widthRatio})`;
-    this.style.width = '393px';
 
     this.style.display = 'flex';
     this.style.flexFlow = 'column wrap';
