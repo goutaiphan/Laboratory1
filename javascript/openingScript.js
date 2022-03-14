@@ -44,6 +44,6 @@ function setInterlude() {
 
     children[6].onclick = null;
     area.animate(fade(false), option(0.5)).onfinish = function () {
-        area.setSection('opening', 'intro');
+        area.setSection('opening', 'info');
     }
 }
