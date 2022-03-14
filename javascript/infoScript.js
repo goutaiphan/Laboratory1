@@ -92,8 +92,8 @@ message.innerHTML = array.normal;
 
 let area = document.createElement('div');
 area.append(title, board, message);
-area.setRatio();
 document.body.append(area);
+document.body.setRatio();
 [...title.children, board, ...board.children, message].setVisibility(false);
 sessionStorage.setItem('section', 'normal');
 
