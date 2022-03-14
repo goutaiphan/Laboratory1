@@ -4,14 +4,10 @@
 
 .area:nth-child(-n+4) {
     margin: 0 auto -12px;
-
     font-family: 'PlayfairDisplay', serif;
     font-size: 78px;
     transform: scale(1.05, 1);
-
-    background-image: linear-gradient(to top right, #36648B 40%, #4F94CD 60%);
-    -webkit-background-clip: text;
-    color: transparent;
+    color: #4F94CD;
 }
 
 .area:nth-child(5) {
