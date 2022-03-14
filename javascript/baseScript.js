@@ -26,17 +26,19 @@ Object.prototype.setRatio = function () {
 
     //alert([screen.width, screen.height, outerWidth, outerHeight]);
     window.scroll(0, 0);
-    alert([width, height]);
-    height < 850
+    console.log([width, height]);
+
+    height < 900
         ? this.style.height = height * 85 / 100 + 'px'
         : this.style.height = width * 85 / 100 + 'px';
-
+    // width < 450
+    //     ? this.style.width = width + 'px'
+    //     : this.style.width = '450px';
     let widthRatio = width >= 1080
         ? 1
         : width > 450 ? width / 450 * 0.7
             : width / 450;
     // let heightRatio = height / 850;
-    this.style.width = '450px';
     this.style.padding = '0 25px';
     this.style.transform = `scale(${widthRatio})`;
 

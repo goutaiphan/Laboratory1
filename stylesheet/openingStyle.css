@@ -1,3 +1,7 @@
+.area {
+    width: max-content;
+}
+
 .area:nth-child(-n+4) {
     margin: 0 auto -12px;
 
