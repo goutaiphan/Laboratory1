@@ -52,6 +52,7 @@ button.animate(zoom(1.1, 1), option(0.5, 1)).onfinish = function () {
 
 function setInterlude() {
     area.animate(fade(false), option(0.5, 0.2)).onfinish = () => {
-        area.setSection('answer','question');
+        location.reload();
+        // area.setSection('answer', 'question');
     }
 }

@@ -1,24 +1,34 @@
-// noinspection CommaExpressionJS
-
 export {randomize, sendEmail};
 
-Object.prototype.setSection = function (name0, name1) {
-    this.remove();
-    document.querySelector(`#${name0}Script`).remove();
-    document.querySelector(`#${name0}Style`).remove();
+String.prototype.removeSection = function () {
+    document.querySelector(`#${this}Script`).remove();
+    document.querySelector(`#${this}Style`).remove();
+}
 
+String.prototype.appendSection = function () {
     let script = document.createElement('script');
-    script.id = `${name1}Script`;
-    script.src = `javascript/${name1}Script.js`;
+    script.id = `${this}Script`;
+    script.src = `javascript/${this}Script.js`;
     script.type = 'module';
 
     let style = document.createElement('link');
-    style.id = `${name1}Style`;
-    style.href = `stylesheet/${name1}Style.css`;
+    style.id = `${this}Style`;
+    style.href = `stylesheet/${this}Style.css`;
     style.rel = 'stylesheet';
 
     document.body.append(script, style);
 }
+
+Object.prototype.setSection = function (name0, name1) {
+    this.remove();
+    name0.removeSection();
+    name1.appendSection();
+}
+
+// let storage = sessionStorage.getItem('Câu 1');
+// if (storage) 'question'.appendSection();
+// else 'opening'.appendSection();
+'opening'.appendSection();
 
 Object.prototype.setRatio = function () {
     let width = Math.min(screen.width, screen.height);

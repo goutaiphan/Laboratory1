@@ -30,6 +30,7 @@ let area = document.createElement('div');
 area.append(part, question, response, button);
 document.body.append(area);
 document.body.setRatio();
+area.setVisibility(true);
 [part, question, children, button].setVisibility(false);
 
 part.animate(fade(), option(0.5));
@@ -60,7 +61,7 @@ button.animate(zoom(1.1, 1), option(0.5, 1 + 1.4)).onfinish = () => {
 
 function setInterlude() {
     area.animate(fade(false), option(0.5,0.2)).onfinish = () => {
-        area.setSection('question','answer');
+        area.setSection('question', 'answer');
     }
 }
 
