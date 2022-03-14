@@ -16,10 +16,8 @@ for (let i = 0; i < array.length; i++) {
     child.setVisibility(false);
     area.append(child);
 }
-area.setRatio();
 document.body.append(area);
-console.log([getComputedStyle(document.body).getPropertyValue('width'),
-    getComputedStyle(document.body).getPropertyValue('height')]);
+document.body.setRatio();
 
 let children = area.children;
 children[0].animate(fade(), option(0.5, 0.5));
@@ -44,6 +42,6 @@ function setInterlude() {
 
     children[6].onclick = null;
     area.animate(fade(false), option(0.5)).onfinish = function () {
-        area.setSection('opening', 'info');
+        area.setSection('opening', 'intro');
     }
 }

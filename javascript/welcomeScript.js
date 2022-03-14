@@ -41,8 +41,8 @@ tieuDan.className = 'tieuDan';
 
 let area = document.createElement('div');
 area.append(board, tieuDan);
-area.setRatio();
 document.body.append(area);
+document.body.setRatio();
 [board, message, tieuDan].setVisibility(false);
 board.setAppearance();
 

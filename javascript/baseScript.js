@@ -26,14 +26,12 @@ Object.prototype.setRatio = function () {
 
     //alert([screen.width, screen.height, outerWidth, outerHeight]);
     window.scroll(0, 0);
-    console.log([width, height]);
-
     height < 900
-        ? document.body.style.minHeight = height * 85 / 100 + 'px'
-        : document.body.style.minHeight = width * 85 / 100 + 'px';
+        ? this.style.minHeight = height * 85 / 100 + 'px'
+        : this.style.minHeight = width * 85 / 100 + 'px';
     width < 450
-        ? document.body.style.maxWidth = width + 'px'
-        : document.body.style.maxWidth = '450px';
+        ? this.style.maxWidth = width + 'px'
+        : this.style.maxWidth = '450px';
     let widthRatio = width >= 1080
         ? 1
         : width > 450
@@ -41,8 +39,7 @@ Object.prototype.setRatio = function () {
             : width / 450;
     // let heightRatio = height / 850;
     // this.style.margin = '0 ' + 25 * widthRatio + 'px';
-    document.body.style.transform = `scale(${widthRatio})`;
-    this.style.backgroundColor = 'red';
+    this.style.transform = `scale(${widthRatio})`;
 
     // if (navigator.userAgent.match(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i)) {
     // }

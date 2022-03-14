@@ -27,8 +27,8 @@ button.innerHTML = 'Tiếp tục';
 
 let area = document.createElement('div');
 area.append(result, answer, button);
-area.setRatio();
 document.body.append(area);
+document.body.setRatio();
 [...resultChildren, answer, button].setVisibility(false);
 
 let type = sessionStorage.getItem('Câu 1') === '1'

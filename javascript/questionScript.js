@@ -28,8 +28,8 @@ button.innerHTML = 'Xác nhận';
 
 let area = document.createElement('div');
 area.append(part, question, response, button);
-area.setRatio();
 document.body.append(area);
+document.body.setRatio();
 [part, question, children, button].setVisibility(false);
 
 part.animate(fade(), option(0.5));

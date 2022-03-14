@@ -1,3 +1,7 @@
+.title, .message, .board {
+    width: 355px;
+}
+
 .title div {
     margin: 0 auto;
     font-family: 'PlayfairDisplay', serif;
@@ -12,7 +16,6 @@
 }
 
 .message {
-    width: 350px;
     font-size: 20px;
     line-height: 1.7;
 }
@@ -23,7 +26,6 @@
     align-items: center;
     justify-content: start;
 
-    width: 350px;
     height: 345px;
     margin: 0 auto 55px;
     padding: 25px 0 0;

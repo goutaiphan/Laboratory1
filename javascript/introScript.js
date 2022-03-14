@@ -22,8 +22,8 @@ tieuDan.className = 'tieuDan';
 
 let area = document.createElement('div');
 area.append(board, tieuDan);
-area.setRatio();
 document.body.append(area);
+document.body.setRatio();
 [...area.children].setVisibility(false);
 
 tieuDan.animate(fade(), option(0.7));
