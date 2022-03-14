@@ -12,7 +12,7 @@
 }
 
 .message {
-    width: 100%;
+    width: 350px;
     font-size: 20px;
     line-height: 1.7;
 }
@@ -23,7 +23,7 @@
     align-items: center;
     justify-content: start;
 
-    width: 100%;
+    width: 350px;
     height: 345px;
     margin: 0 auto 55px;
     padding: 25px 0 0;
@@ -32,8 +32,11 @@
     background-color: #fffbf7;
 }
 
-.email, .password, .name, .birthday {
+.email, .password, .name, .birthday, .OTP, .button {
     width: 75%;
+}
+
+.email, .password, .name, .birthday {
     height: 60px;
     margin: 0 0 20px;
     padding: 12px 0 0;
@@ -75,9 +78,7 @@
     align-items: center;
     justify-content: space-between;
 
-    width: 75%;
     height: max-content;
-
     position: absolute;
     margin: 225px auto 0;
     inset: 0;
@@ -107,10 +108,8 @@
 }
 
 .button {
-    width: 75%;
     height: 55px;
     margin: 40px 0 0;
-
     font-size: 20px;
     color: gray;
 

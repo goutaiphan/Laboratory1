@@ -1,5 +1,8 @@
+.part, .question,.response {
+    width: 90%;
+}
+
 .part {
-    width: 100%;
     margin-bottom: 50px;
     padding-bottom: 8px;
 
@@ -17,7 +20,6 @@
 }
 
 .response {
-    width: 100%;
     margin-bottom: 50px;
 }
 

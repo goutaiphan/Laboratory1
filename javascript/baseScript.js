@@ -29,8 +29,8 @@ Object.prototype.setRatio = function () {
     console.log([width, height]);
 
     height < 900
-        ? this.style.height = height * 85 / 100 + 'px'
-        : this.style.height = width * 85 / 100 + 'px';
+        ? this.style.minHeight = height * 90 / 100 + 'px'
+        : this.style.minHeight = width * 90 / 100 + 'px';
     width < 450
         ? this.style.width = width + 'px'
         : this.style.width = '450px';
@@ -39,7 +39,7 @@ Object.prototype.setRatio = function () {
         : width > 450 ? width / 450 * 0.7
             : width / 450;
     // let heightRatio = height / 850;
-    this.style.padding = '0 25px';
+    // this.style.margin = '0 ' + 25 * widthRatio + 'px';
     this.style.transform = `scale(${widthRatio})`;
 
     this.style.display = 'flex';
