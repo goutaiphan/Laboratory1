@@ -47,6 +47,7 @@ Object.prototype.setRatio = function () {
     this.style.alignItems = 'center';
     this.style.justifyContent = 'center';
     this.style.margin = 'auto';
+    this.style.background = 'beige'
 
     // if (navigator.userAgent.match(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i)) {
     // }
