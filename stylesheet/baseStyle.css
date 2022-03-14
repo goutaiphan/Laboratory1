@@ -39,6 +39,15 @@
     -webkit-user-select: none;
 }
 
+body {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    background-color: beige;
+}
+
 span {
     font-size: inherit;
     color: #674220;

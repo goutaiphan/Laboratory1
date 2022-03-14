@@ -29,25 +29,20 @@ Object.prototype.setRatio = function () {
     console.log([width, height]);
 
     height < 900
-        ? this.style.minHeight = height * 85 / 100 + 'px'
-        : this.style.minHeight = width * 85 / 100 + 'px';
+        ? document.body.style.minHeight = height * 85 / 100 + 'px'
+        : document.body.style.minHeight = width * 85 / 100 + 'px';
     width < 450
-        ? this.style.width = width + 'px'
-        : this.style.width = '450px';
+        ? document.body.style.maxWidth = width + 'px'
+        : document.body.style.maxWidth = '450px';
     let widthRatio = width >= 1080
         ? 1
-        : width > 450 ? width / 450 * 0.7
+        : width > 450
+            ? width / 450 * 0.7
             : width / 450;
     // let heightRatio = height / 850;
     // this.style.margin = '0 ' + 25 * widthRatio + 'px';
-    this.style.transform = `scale(${widthRatio})`;
-
-    this.style.display = 'flex';
-    this.style.flexFlow = 'column wrap';
-    this.style.alignItems = 'center';
-    this.style.justifyContent = 'center';
-    this.style.margin = 'auto';
-    //this.style.background = 'beige'
+    document.body.style.transform = `scale(${widthRatio})`;
+    this.style.backgroundColor = 'red';
 
     // if (navigator.userAgent.match(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i)) {
     // }
