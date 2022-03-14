@@ -9,7 +9,7 @@
     font-size: 78px;
     transform: scale(1.05, 1);
 
-    background-image: linear-gradient(to top right, #36648B 20%, #4F94CD 60%);
+    background-image: linear-gradient(to top right, #36648B 40%, #4F94CD 60%);
     -webkit-background-clip: text;
     color: transparent;
 }
