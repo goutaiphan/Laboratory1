@@ -33,16 +33,20 @@ function setContent() {
     if (!partIndex) partIndex = 1;
 
     let file = JSON.parse(sessionStorage.getItem('file'));
-    let response = sessionStorage.getItem('part' + partIndex);
+    let response = sessionStorage.getItem('part' + partIndex).replaceAll('<br>', ' ');
     let answer = file[partIndex - 1].answer.replace(/\w\. /g, '');
     explain.innerHTML = file[partIndex - 1].explain;
     sessionStorage.setItem('partIndex', (partIndex + 1).toString());
 
-    let type = response === answer
-        ? 'right'
-        : 'wrong';
-    result.innerHTML = array[type];
-    [result, button, ...explain.querySelectorAll('span')].addClass(type);
+    if (response === answer) {
+        result.innerHTML = array.right;
+        [result, button, ...explain.querySelectorAll('span')].addClass('right');
+        [result, button, ...explain.querySelectorAll('span')].removeClass('wrong');
+    } else {
+        result.innerHTML = array.wrong;
+        [result, button, ...explain.querySelectorAll('span')].addClass('wrong');
+        [result, button, ...explain.querySelectorAll('span')].removeClass('right');
+    }
 
     button.style.cursor = 'default';
     document.body.append(area);

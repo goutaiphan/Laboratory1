@@ -80,6 +80,10 @@ Array.prototype.addClass = function (name) {
     this.forEach((item) => item.classList.add(name));
 }
 
+Array.prototype.removeClass = function (name) {
+    this.forEach((item) => item.classList.remove(name));
+}
+
 String.prototype.toTitleCase = function () {
     return this.replace(/\w\S*/g, function (data) {
             return data.charAt(0).toUpperCase() + data.substring(1).toLowerCase();
