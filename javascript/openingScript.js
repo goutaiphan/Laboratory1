@@ -33,7 +33,7 @@ children[6].animate(fade(), option(0.5, 3.2)).onfinish = function () {
 
 function setInterlude() {
     let backgroundAudio = document.querySelector('#backgroundAudio');
-    backgroundAudio.volume = 0.8;
+    backgroundAudio.volume = 0.7;
     backgroundAudio.play();
     document.body.append(backgroundAudio);
 
