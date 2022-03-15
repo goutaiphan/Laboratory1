@@ -1,7 +1,7 @@
 import {bounce, fade, resize, option, pump} from "./animationScript.js";
 
-// let userData = JSON.parse(sessionStorage.getItem('userData'));
-let userData = {userName: 'Tĩnh Tâm', userID: '1'};
+let userData = JSON.parse(sessionStorage.getItem('userData'));
+// let userData = {userName: 'Tĩnh Tâm', userID: '1'};
 let array0 = [`Xin chào mừng<br><span class="userName">${userData.userName}</span><br>`,
     `đã quay trở lại<br>cùng chư huynh đệ<br><span>Tàng Kinh Các Đại Đạo.</span>`];
 let array1 = [`Xin chúc mừng<br><span class="userName">${userData.userName}</span>`,
@@ -18,8 +18,8 @@ let array2 = [`Chương trình <span>Niềm vui<br>tu Đạo</span> lần này s
     `Đối với câu <span>tự luận,</span><br>quý huynh tỷ cần viết <span>đúng chính tả</span> tiếng Việt.`,
     `<span>Tiểu Dần</span> mến chúc quý huynh tỷ thật nhiều may mắn. Quý huynh tỷ đã sẵn sàng để <span>bắt đầu</span> chứ?`];
 
-// let section = sessionStorage.getItem('section');
-let section = 'signIn';
+let section = sessionStorage.getItem('section');
+// let section = 'signIn';
 let array = section === 'signIn'
     ? array0.concat(array2)
     : array1.concat(array2);
