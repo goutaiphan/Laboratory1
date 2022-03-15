@@ -20,7 +20,7 @@ button.innerHTML = 'Xác nhận';
 
 let area = document.createElement('div');
 area.style.position = 'absolute';
-area.style.inset = '0';
+area.style.top = '0';
 area.append(question, response, button);
 
 setQuestion();
