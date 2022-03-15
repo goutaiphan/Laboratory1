@@ -101,7 +101,7 @@ String.prototype.setPlay = function (volume) {
     }
     audio.onended = () => {
         let job = setInterval(function () {
-            newVolume += 0.2;
+            newVolume += 0.1;
             if (newVolume > baseVolume - 0.05) clearInterval(job);
             backgroundAudio.volume = newVolume;
         }, 0.1 * 1000);
