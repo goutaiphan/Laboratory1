@@ -48,7 +48,7 @@ function setContent() {
         item.classList.remove('active');
         item.style.height = partIndex === 2
             ? '135px'
-            : '57px';
+            : '60px';
     });
 
     button.classList.remove('active');
