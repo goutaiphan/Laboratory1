@@ -34,6 +34,7 @@ Object.prototype.setRatio = function () {
     let height = Math.max(screen.width, screen.height);
 
     //alert([screen.width, screen.height, outerWidth, outerHeight]);
+    alert(height);
     window.scroll(0, 0);
     height < 900
         ? this.style.minHeight = height * 85 / 100 + 'px'
@@ -46,7 +47,6 @@ Object.prototype.setRatio = function () {
         : width > 450
             ? width / 450 * 0.7
             : width / 450;
-    // let heightRatio = height / 850;
     this.style.padding = height * 5 / 100 + 'px 0';
     this.style.transform = `scale(${widthRatio})`;
 
