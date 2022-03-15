@@ -14,8 +14,6 @@ button.className = 'button';
 button.innerHTML = 'Tiếp tục';
 
 let area = document.createElement('div');
-area.style.position = 'absolute';
-area.style.top = '0';
 area.append(result, explain, button);
 
 function setAnswer() {
@@ -33,23 +31,18 @@ function setContent() {
 
     let partIndex = parseInt(sessionStorage.getItem('partIndex'));
     if (!partIndex) partIndex = 1;
-    let answer = JSON.parse(sessionStorage.getItem('file'))[partIndex - 1].answer
-        .replace(/\w\. /g, '');
+
+    let file = JSON.parse(sessionStorage.getItem('file'));
     let response = sessionStorage.getItem('part' + partIndex);
+    let answer = file[partIndex - 1].answer.replace(/\w\. /g, '');
+    explain.innerHTML = file[partIndex - 1].explain;
     sessionStorage.setItem('partIndex', (partIndex + 1).toString());
 
     let type = response === answer
         ? 'right'
         : 'wrong';
     result.innerHTML = array[type];
-    [result, button, ...document.querySelectorAll('span')].addClass(type);
-
-    explain.innerHTML = `Thánh Lễ của Đức Ngọc Hoàng Thượng Đế được chọn là ngày <span>09-01</span> nguyệt lịch hằng năm,
-thiết lễ cúng Trời, thành kính tri ân Đấng tạo hóa dưỡng dục muôn sinh.
-9 là số thuần dương tối cao, 1 là số thuần dương đầu tiên nên chọn <span>09-01</span> làm ngày lễ vía Đức Đại Từ Phụ đó vậy.<br>
-Bên cạnh đó, <span>15-08</span> là ngày Thánh Lễ của Đức Dao Trì Kim Mẫu. 
-<span>18-08</span> là ngày Thánh Lễ của Đức Thái Bạch Kim Tinh. 
-<span>09-09</span> là ngày Thánh Lễ của Đức Hồng Quân Lão Tổ.`;
+    [result, button, ...explain.querySelectorAll('span')].addClass(type);
 
     button.style.cursor = 'default';
     document.body.append(area);

@@ -19,8 +19,6 @@ button.className = 'button';
 button.innerHTML = 'Xác nhận';
 
 let area = document.createElement('div');
-area.style.position = 'absolute';
-area.style.top = '0';
 area.append(question, response, button);
 
 setQuestion();
@@ -57,7 +55,6 @@ function setContent() {
     document.body.append(area);
     document.body.setRatio();
     [...questionChildren, ...responseChildren, button].setVisibility(false);
-    alert(getComputedStyle(document.body).getPropertyValue('padding'));
 }
 
 function setAnimation() {

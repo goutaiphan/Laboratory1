@@ -53,11 +53,12 @@ fetch('document/NiemVuiTuDao.txt')
         let textArray = text.split('\n\n');
         let array = [];
 
-        for (let i = 0; i < textArray.length / 3; i++) {
+        for (let i = 0; i < textArray.length / 4; i++) {
             array.push({
-                question: textArray[i * 3],
-                response: textArray[i * 3 + 1],
-                answer: textArray[i * 3 + 2]
+                question: textArray[i * 4],
+                response: textArray[i * 4 + 1],
+                answer: textArray[i * 4 + 2],
+                explain: textArray[i * 4 + 3]
             });
         }
         console.log(array);
