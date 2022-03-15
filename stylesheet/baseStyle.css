@@ -20,7 +20,7 @@
 
 * {
     position: relative;
-    box-sizing: border-box;
+    box-sizing: content-box;
     border: none;
     outline: none;
 
