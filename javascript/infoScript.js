@@ -33,7 +33,7 @@ let array = {
     rightPassword: `Mật khẩu <span>chính xác,</span> quý<br>
         huynh tỷ vui lòng <span>đăng nhập</span><br>để tham gia chương trình.`,
     verify: `<span>Mã xác thực</span> đã gửi qua <span>email,</span><br>
-        quý huynh tỷ vui lòng sử dụng<br>để <span>đăng ký</span> tài khoản.`,
+        quý huynh tỷ vui lòng sử dụng<br>để đăng ký tài khoản.`,
     wrongOTP: `Mã xác thực <span>chưa chính xác,</span><br>
         quý huynh tỷ vui lòng <span>kiểm tra</span><br>thông tin tài khoản qua email.`,
     rightOTP: `Tài khoản <span>đã xác thực,</span> quý<br>

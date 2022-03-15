@@ -1,4 +1,4 @@
-.question, .response {
+.question, .response, .toolbar {
     width: 360px;
 }
 
@@ -20,7 +20,7 @@
 }
 
 .response {
-    margin-bottom: 50px;
+    margin-bottom: 40px;
 }
 
 .response button {
@@ -33,13 +33,29 @@
     text-align: start;
 }
 
-.button {
+.toolbar {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.toolbar div {
+    font-family: 'RobotoSlab', serif;
+    font-size: 35px;
+    text-align: start;
+    transform: scale(1, 2);
+    letter-spacing: 2px;
+    color: #624021;
+}
+
+.toolbar button {
     width: 200px;
     height: 55px;
     font-size: 20px;
 }
 
-.response button, .button {
+.response button, .toolbar button {
     border-radius: 5px;
     border: 2px solid #c7b6a7;
     background-image: linear-gradient(to left, #fffbf7 50%, #f8efe0 50%);
@@ -48,6 +64,6 @@
     transition: 0.5s ease-out;
 }
 
-.response button.active, .button.active {
+.response button.active, .toolbar button.active {
     background-position: left;
 }

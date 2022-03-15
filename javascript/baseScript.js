@@ -84,6 +84,10 @@ Array.prototype.removeClass = function (name) {
     this.forEach((item) => item.classList.remove(name));
 }
 
+Array.prototype.toggleClass = function (name) {
+    this.forEach((item) => item.classList.toggle(name));
+}
+
 String.prototype.setPlay = function (volume) {
     let audio = document.querySelector(`#${this}`),
     backgroundAudio = document.querySelector('#backgroundAudio'),

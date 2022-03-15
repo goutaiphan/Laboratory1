@@ -22,29 +22,27 @@ function setAnswer() {
 }
 
 function setContent() {
-    let array = {
-        right: `<div>Xin chúc mừng,</div>
-            <div>đây là câu trả lời chính xác.</div>`,
-        wrong: `<div>Thật đáng tiếc,</div>
-            <div>đây là câu trả lời chưa chính xác.</div>`
-    };
+    let part = parseInt(sessionStorage.getItem('part')),
+        contentArray = JSON.parse(sessionStorage.getItem('contentArray'))[part - 1];
 
-    let partIndex = parseInt(sessionStorage.getItem('partIndex'));
-    if (!partIndex) partIndex = 1;
+    explain.innerHTML = contentArray.explain.replaceAll('\n', '<br>');
+    sessionStorage.setItem('part', (part + 1).toString());
 
-    let file = JSON.parse(sessionStorage.getItem('file'));
-    let response = sessionStorage.getItem('part' + partIndex).replaceAll('<br>', ' ');
-    let answer = file[partIndex - 1].answer.replace(/\w\. /g, '');
-    explain.innerHTML = file[partIndex - 1].explain.replaceAll('\n', '<br>');
-    sessionStorage.setItem('partIndex', (partIndex + 1).toString());
+    let responseArray = JSON.parse(sessionStorage.getItem('response' + part)),
+    answerArray = contentArray.answer.replace(/\w\. /g, '').split('\n');
+    let difference = responseArray.length > answerArray.length
+        ? responseArray.filter(item => !answerArray.includes(item))
+        : answerArray.filter(item => !responseArray.includes(item));
 
-    if (response === answer) {
-        result.innerHTML = array.right;
+    if (difference.length === 0) {
+        result.innerHTML = `<div>Xin chúc mừng,</div>
+            <div>đây là câu trả lời chính xác.</div>`;
         [result, button, ...explain.querySelectorAll('span')].addClass('right');
         [result, button, ...explain.querySelectorAll('span')].removeClass('wrong');
         'rightAudio'.setPlay(0.4);
     } else {
-        result.innerHTML = array.wrong;
+        result.innerHTML = `<div>Thật đáng tiếc,</div>
+            <div>đây là câu trả lời chưa chính xác.</div>`;
         [result, button, ...explain.querySelectorAll('span')].addClass('wrong');
         [result, button, ...explain.querySelectorAll('span')].removeClass('right');
         'wrongAudio'.setPlay(0.4);

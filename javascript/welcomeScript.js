@@ -13,7 +13,9 @@ let array1 = [`Xin chúc mừng<br><span class="userName">${userData.userName}</
 //     `<span>Tiểu Dần</span> sẽ thông báo<br>đến quý huynh tỷ khi<br>chương trình <span>ra mắt.</span><br>
 //     Xin trân trọng cảm ơn.`];
 let array2 = [`Chương trình <span>Niềm vui<br>tu Đạo</span> lần này sẽ bao gồm<br><span>15 câu hỏi,</span>`,
-    `nếu trả lời <span>chính xác</span> trong thời gian <span>càng ngắn,</span><br>quý huynh tỷ sẽ đạt điểm <span>càng cao.</span>`,
+    `nếu trả lời chính xác trong thời gian <span>càng ngắn,</span><br>quý huynh tỷ sẽ đạt điểm <span>càng cao.</span>`,
+    `Đối với câu <span>trắc nghiệm,</span><br>quý huynh tỷ có thể chọn <span>nhiều phương án</span> cùng lúc.`,
+    `Đối với câu <span>tự luận,</span><br>quý huynh tỷ cần viết <span>đúng chính tả</span> tiếng Việt.`,
     `<span>Tiểu Dần</span> mến chúc quý huynh tỷ thật nhiều may mắn. Quý huynh tỷ đã sẵn sàng để <span>bắt đầu</span> chứ?`];
 
 // let section = sessionStorage.getItem('section');

@@ -39,18 +39,16 @@ function setInterlude() {
 
     children[6].onclick = null;
     area.animate(fade(false), option(0.5)).onfinish = function () {
-        // area.setSection('opening', 'info');
         area.setSection('opening', 'question');
     };
 }
 
-sessionStorage.removeItem('partIndex');
+sessionStorage.setItem('part', '1');
 fetch('document/NiemVuiTuDao.txt')
     .then(response => response.text())
     .then(text => {
         let textArray = text.split('\n\n');
         let array = [];
-
         for (let i = 0; i < textArray.length / 4; i++) {
             array.push({
                 question: textArray[i * 4],
@@ -60,5 +58,5 @@ fetch('document/NiemVuiTuDao.txt')
             });
         }
         console.log(array);
-        sessionStorage.setItem('file', JSON.stringify(array));
+        sessionStorage.setItem('contentArray', JSON.stringify(array));
     });

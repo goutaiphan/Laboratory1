@@ -14,12 +14,15 @@ for (let i = 0; i < 4; i++) {
 }
 let responseChildren = response.children;
 
-let button = document.createElement('button');
-button.className = 'button';
-button.innerHTML = 'Xác nhận';
+let toolbar = document.createElement('div');
+toolbar.className = 'toolbar';
+toolbar.innerHTML = '<div></div><button>Xác nhận</button>';
+let toolbarChildren = toolbar.children,
+    clock = toolbarChildren[0],
+    button = toolbarChildren[1];
 
 let area = document.createElement('div');
-area.append(question, response, button);
+area.append(question, response, toolbar);
 
 setQuestion();
 
@@ -29,78 +32,115 @@ function setQuestion() {
 }
 
 function setContent() {
-    let partIndex = parseInt(sessionStorage.getItem('partIndex'));
-    if (!partIndex) partIndex = 1;
+    let part = parseInt(sessionStorage.getItem('part')),
+        contentArray = JSON.parse(sessionStorage.getItem('contentArray'))[part - 1];
 
-    let file = JSON.parse(sessionStorage.getItem('file'));
-    questionChildren[0].innerHTML = `Câu ${partIndex}`;
-    questionChildren[1].innerHTML = file[partIndex - 1].question.replace(/Câu \d: /g, '');
+    questionChildren[0].innerHTML = `Câu ${part}`;
+    questionChildren[1].innerHTML = contentArray.question
+        .replace(/Câu \d: /g, '')
+        .replaceAll('\n', '<br>');
 
     [...responseChildren].forEach((item, index) => {
-        let string = file[partIndex - 1].response
+        item.innerHTML = contentArray.response
             .split('\n')[index]
             .replace(/\w\. /g, '');
-        item.innerHTML = string;
-        item.onclick = null;
-        item.style.cursor = 'default';
-        item.classList.remove('active');
-
-        switch (partIndex) {
-            case 2:
-                item.style.height = '135px';
-                break;
-            case 4:
-                item.style.height = '95px';
-                break;
-            default:
-                item.style.height = '60px';
-                break;
-        }
+        if ([3, 5].includes(part)) item.style.height = '95px';
+        else item.style.height = '60px';
     });
-
-    button.classList.remove('active');
-    button.style.cursor = 'default';
+    setResponse(false);
+    setButton(false);
+    setClock(false);
 
     document.body.append(area);
     document.body.setRatio();
-    [...questionChildren, ...responseChildren, button].setVisibility(false);
+    [...questionChildren, ...responseChildren, ...toolbarChildren].setVisibility(false);
 }
 
 function setAnimation() {
     questionChildren[0].animate(fade(), option(0.5));
     questionChildren[1].animate(fade(), option(0.5, 0.5));
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < responseChildren.length; i++) {
         responseChildren[i].animate(slide(-40, 0), option(0.5, 1 + 0.3 * i));
     }
-    button.animate(zoom(1.1, 1), option(0.5, 1 + 1.4)).onfinish = setClick;
+    clock.animate(zoom(1.1, 1), option(0.5, 1 + 1.4))
+        .onfinish = () => setClock();
+    button.animate(zoom(1.1, 1), option(0.5, 1 + 1.4))
+        .onfinish = () => setResponse();
 }
 
-function setClick() {
+function setResponse(type = true) {
     [...responseChildren].forEach((item) => {
-        item.style.cursor = 'pointer';
-        item.onclick = () => {
-            [...responseChildren].forEach((item) => item.classList.remove('active'));
-            [item, button].addClass('active');
-
-            let partIndex = parseInt(sessionStorage.getItem('partIndex'));
-            if (!partIndex) partIndex = 1;
-            sessionStorage.setItem('part' + partIndex, item.innerHTML);
-
-            setTimeout(function () {
-                button.style.cursor = 'pointer';
-                button.onclick = () => {
-                    button.onclick = null;
-                    button.animate(pump(0.95),
-                        option(0.2, 0, 'linear', 'alternate', 2));
-                    setInterlude();
-                };
-            }, 0.5 * 1000);
+        if (type === true) {
+            item.style.cursor = 'pointer';
+            item.onclick = () => {
+                item.classList.toggle('active');
+                let quantity = [...responseChildren].reduce(function (total, item) {
+                    if (item.classList.length !== 0) total += 1;
+                    return total;
+                }, 0);
+                quantity > 0
+                    ? setButton()
+                    : setButton(false);
+            }
+        } else {
+            item.onclick = null;
+            item.style.cursor = 'default';
+            item.classList.remove('active');
         }
     });
 }
 
+function setButton(type = true) {
+    if (type === true) {
+        button.classList.add('active');
+        button.style.cursor = 'pointer';
+        button.onclick = () => {
+            button.onclick = null;
+            button.animate(pump(0.95),
+                option(0.2, 0, 'linear', 'alternate', 2));
+            setInterlude();
+        };
+    } else {
+        button.style.cursor = 'default';
+        button.onclick = null;
+        button.classList.remove('active');
+    }
+}
+
+function setClock(type = true) {
+    if (type === true) {
+        let second = 60;
+        let job = setInterval(function () {
+            second -= 1;
+            clock.innerHTML = second < 10
+                ? `00:0${second}`
+                : `00:${second}`;
+            if (second === 0) {
+                setActivity(second);
+                setInterlude();
+            }
+            if (document.activeElement === button && button.classList.length !== 0) {
+                clearInterval(job);
+                setActivity(second);
+            }
+        }, 1000);
+    } else {
+        clock.innerHTML = '01:00';
+    }
+}
+
+function setActivity(second) {
+    let part = parseInt(sessionStorage.getItem('part'));
+    let responseArray = [...responseChildren].reduce((total, item) => {
+        if (item.classList.length !== 0) total.push(item.innerHTML.replaceAll('<br>', ' '));
+        return total;
+    }, []);
+    sessionStorage.setItem('response' + part, JSON.stringify(responseArray));
+    sessionStorage.setItem('clock' + part, second.toString());
+}
+
 function setInterlude() {
-    [...questionChildren, ...responseChildren, button].forEach((item) => {
+    [...questionChildren, ...responseChildren, ...toolbarChildren].forEach((item) => {
         item.animate(fade(false), option(0.5, 0.2))
     });
     setTimeout(function () {
