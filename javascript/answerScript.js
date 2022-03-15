@@ -15,6 +15,7 @@ button.innerHTML = 'Tiếp tục';
 
 let area = document.createElement('div');
 area.style.position = 'absolute';
+area.style.top = '0';
 area.append(result, explain, button);
 
 function setAnswer() {

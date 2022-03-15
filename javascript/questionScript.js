@@ -46,7 +46,9 @@ function setContent() {
         item.onclick = null;
         item.style.cursor = 'default';
         item.classList.remove('active');
-        console.log(string.split(/\r\n|\r|\n/).length);
+        item.style.height = partIndex === 2
+            ? '135px'
+            : '57px';
     });
 
     button.classList.remove('active');

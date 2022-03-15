@@ -25,9 +25,8 @@
 
 .response button {
     width: 100%;
-    height: max-content;
     margin-bottom: 20px;
-    padding: 10px 25px;
+    padding: 0 25px;
 
     font-size: 20px;
     line-height: 1.7;
