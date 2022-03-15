@@ -57,6 +57,7 @@ function setContent() {
     document.body.append(area);
     document.body.setRatio();
     [...questionChildren, ...responseChildren, button].setVisibility(false);
+    alert(getComputedStyle(document.body).getPropertyValue('padding'));
 }
 
 function setAnimation() {

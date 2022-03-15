@@ -34,7 +34,6 @@ Object.prototype.setRatio = function () {
     let height = Math.max(screen.width, screen.height);
 
     //alert([screen.width, screen.height, outerWidth, outerHeight]);
-    alert(height);
     window.scroll(0, 0);
     height < 900
         ? this.style.minHeight = height * 85 / 100 + 'px'
