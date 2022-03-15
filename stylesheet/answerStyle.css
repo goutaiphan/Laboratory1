@@ -1,7 +1,7 @@
 .result, .answer {
     width: 360px;
-
 }
+
 .result {
     margin-bottom: 50px;
     padding-bottom: 50px;
@@ -9,7 +9,7 @@
 }
 
 .result div:first-of-type {
-    margin-bottom: 9px;
+    margin-bottom: 11px;
     font-family: 'PlayfairDisplay', serif;
     font-size: 35px;
 }
@@ -29,7 +29,7 @@
 
 .button {
     width: 200px;
-    height: 53px;
+    height: 55px;
     font-size: 20px;
 
     border: 2px solid;

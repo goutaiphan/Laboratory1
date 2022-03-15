@@ -1,4 +1,3 @@
-import {} from "./baseScript.js";
 import {option, fade, slide, pump} from "./animationScript.js";
 
 let area = document.createElement('div');
@@ -42,6 +41,25 @@ function setInterlude() {
 
     children[6].onclick = null;
     area.animate(fade(false), option(0.5)).onfinish = function () {
+        // area.setSection('opening', 'info');
         area.setSection('opening', 'question');
     };
 }
+
+sessionStorage.removeItem('partIndex');
+fetch('document/NiemVuiTuDao.txt')
+    .then(response => response.text())
+    .then(text => {
+        let textArray = text.split('\n\n');
+        let array = [];
+
+        for (let i = 0; i < textArray.length / 3; i++) {
+            array.push({
+                question: textArray[i * 3],
+                response: textArray[i * 3 + 1],
+                answer: textArray[i * 3 + 2]
+            });
+        }
+        console.log(array);
+        sessionStorage.setItem('file', JSON.stringify(array));
+    });

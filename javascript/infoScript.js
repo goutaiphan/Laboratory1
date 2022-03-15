@@ -418,8 +418,9 @@ function setButton(type) {
             };
         }, 0.5 * 1000);
     } else {
-        button.classList.remove('active');
         button.onclick = null;
+        button.style.cursor = 'default';
+        button.classList.remove('active');
     }
 }
 

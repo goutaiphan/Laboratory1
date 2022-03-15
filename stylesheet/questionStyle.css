@@ -1,8 +1,8 @@
-.part, .question,.response {
+.question, .response {
     width: 360px;
 }
 
-.part {
+.question div:first-of-type {
     margin-bottom: 50px;
     padding-bottom: 8px;
 
@@ -13,7 +13,7 @@
     border-bottom: 2px solid #c7b6a7;
 }
 
-.question {
+.question div:last-of-type {
     margin-bottom: 50px;
     font-size: 22px;
     line-height: 1.7;
@@ -25,9 +25,9 @@
 
 .response button {
     width: 100%;
-    height: 55px;
-    margin-bottom: 15px;
-    padding: 0 25px;
+    height: max-content;
+    margin-bottom: 20px;
+    padding: 10px 25px;
 
     font-size: 20px;
     line-height: 1.7;
@@ -36,11 +36,11 @@
 
 .button {
     width: 200px;
-    height: 53px;
+    height: 55px;
     font-size: 20px;
 }
 
-button {
+.response button, .button {
     border-radius: 5px;
     border: 2px solid #c7b6a7;
     background-image: linear-gradient(to left, #fffbf7 50%, #f8efe0 50%);
@@ -49,6 +49,6 @@ button {
     transition: 0.5s ease-out;
 }
 
-button.active {
+.response button.active, .button.active {
     background-position: left;
 }

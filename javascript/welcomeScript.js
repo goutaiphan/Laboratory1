@@ -1,4 +1,3 @@
-import {} from "./baseScript.js";
 import {bounce, fade, resize, option, pump} from "./animationScript.js";
 
 // let userData = JSON.parse(sessionStorage.getItem('userData'));

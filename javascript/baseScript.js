@@ -21,13 +21,12 @@ String.prototype.appendSection = function () {
 
 Object.prototype.setSection = function (name0, name1) {
     this.remove();
-    name0.removeSection();
-    name1.appendSection();
+    let script0 = document.querySelector(`#${name0}Script`);
+    let script1 = document.querySelector(`#${name1}Script`);
+    if (script0) name0.removeSection();
+    if (!script1) name1.appendSection();
 }
 
-// let storage = sessionStorage.getItem('Câu 1');
-// if (storage) 'question'.appendSection();
-// else 'opening'.appendSection();
 'opening'.appendSection();
 
 Object.prototype.setRatio = function () {

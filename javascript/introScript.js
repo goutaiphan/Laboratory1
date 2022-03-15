@@ -1,4 +1,3 @@
-import {} from "./baseScript.js";
 import {option, fade, slide, bounce, resize} from "./animationScript.js";
 
 let array = [`Mến chào quý huynh tỷ,<br>đệ là <span>Tiểu Dần</span>.`,
