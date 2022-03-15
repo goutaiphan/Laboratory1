@@ -20,6 +20,7 @@ button.innerHTML = 'Xác nhận';
 
 let area = document.createElement('div');
 area.style.position = 'absolute';
+area.style.inset = '0';
 area.append(question, response, button);
 
 setQuestion();
@@ -38,12 +39,14 @@ function setContent() {
     questionChildren[1].innerHTML = file[partIndex - 1].question.replace(/Câu \d: /g, '');
 
     [...responseChildren].forEach((item, index) => {
-        item.innerHTML = file[partIndex - 1].response
+        let string = file[partIndex - 1].response
             .split('\n')[index]
             .replace(/\w\. /g, '');
+        item.innerHTML = string;
         item.onclick = null;
         item.style.cursor = 'default';
         item.classList.remove('active');
+        console.log(string.split(/\r\n|\r|\n/).length);
     });
 
     button.classList.remove('active');
