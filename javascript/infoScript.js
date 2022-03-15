@@ -434,7 +434,7 @@ function updateUserData() {
             userName: name.value,
             userAlias: name.value.replaceAll(' ', '').toLowerCase(),
             userBirthday: birthday.value
-        }
+        };
         update(child(userRef, userID), userData).then(function () {
             sessionStorage.setItem('userData', JSON.stringify(userData));
             sendEmail(email.value, 'Thông tin tài khoản chính thức',
