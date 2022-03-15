@@ -84,6 +84,30 @@ Array.prototype.removeClass = function (name) {
     this.forEach((item) => item.classList.remove(name));
 }
 
+String.prototype.setPlay = function (volume) {
+    let audio = document.querySelector(`#${this}`),
+    backgroundAudio = document.querySelector('#backgroundAudio'),
+    baseVolume = backgroundAudio.volume,
+    newVolume = backgroundAudio.volume;
+
+    audio.volume = volume;
+    audio.play();
+    audio.onplaying = () => {
+        let job = setInterval(function () {
+            newVolume -= 0.1;
+            if (newVolume < 0.05) clearInterval(job);
+            backgroundAudio.volume = newVolume;
+        }, 0.1 * 1000);
+    }
+    audio.onended = () => {
+        let job = setInterval(function () {
+            newVolume += 0.1;
+            if (newVolume > baseVolume - 0.05) clearInterval(job);
+            backgroundAudio.volume = newVolume;
+        }, 0.1 * 1000);
+    }
+}
+
 String.prototype.toTitleCase = function () {
     return this.replace(/\w\S*/g, function (data) {
             return data.charAt(0).toUpperCase() + data.substring(1).toLowerCase();

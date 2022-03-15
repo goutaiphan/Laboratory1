@@ -35,17 +35,19 @@ function setContent() {
     let file = JSON.parse(sessionStorage.getItem('file'));
     let response = sessionStorage.getItem('part' + partIndex).replaceAll('<br>', ' ');
     let answer = file[partIndex - 1].answer.replace(/\w\. /g, '');
-    explain.innerHTML = file[partIndex - 1].explain;
+    explain.innerHTML = file[partIndex - 1].explain.replaceAll('\n', '<br>');
     sessionStorage.setItem('partIndex', (partIndex + 1).toString());
 
     if (response === answer) {
         result.innerHTML = array.right;
         [result, button, ...explain.querySelectorAll('span')].addClass('right');
         [result, button, ...explain.querySelectorAll('span')].removeClass('wrong');
+        'rightAudio'.setPlay(0.4);
     } else {
         result.innerHTML = array.wrong;
         [result, button, ...explain.querySelectorAll('span')].addClass('wrong');
         [result, button, ...explain.querySelectorAll('span')].removeClass('right');
+        'wrongAudio'.setPlay(0.4);
     }
 
     button.style.cursor = 'default';
