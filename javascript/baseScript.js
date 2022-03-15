@@ -46,7 +46,7 @@ Object.prototype.setRatio = function () {
         : width > 450
             ? width / 450 * 0.7
             : width / 450;
-    this.style.margin = height * 5 / 100 + 'px 0';
+    this.style.padding = '5vmax 0';
     this.style.transform = `scale(${widthRatio})`;
 
     // if (navigator.userAgent.match(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i)) {
